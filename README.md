@@ -1,16 +1,14 @@
-# Combat Frogs — clean build (EN)
+# Combat Frogs — full neon pack (EN)
 
-How to deploy quickly:
-1) Replace repo files with the content of this archive.
-2) Commit → Push.
-3) Cloudflare Pages will rebuild.
-4) If old content persists: Cloudflare → Caching → Purge Everything.
+This bundle contains complete, ready-to-deploy files:
+- `index.html` — full page with neon hero (text layer), all sections intact
+- `styles/main.css` — styles incl. brick wall & neon glow
+- `styles/main.js` — accordion, lightbox, smooth scroll
+- `assets/brick-wall-clean.png` — clean wall (no text/lamps)
+- icons: `favicon.(png|svg)`, `apple-touch-icon.png`, `logo-dot.svg`
+- `gallery/1..8.webp` — placeholders
 
-Where to edit:
-- `index.html` — page markup & copy
-- `styles/main.css` — colors, neon, layout
-- `styles/main.js` — accordion, smooth scroll, lightbox
-- `assets/` — icons
-- `gallery/` — preview tiles
-
-Sections: Hero → Preview → Links → Utility → Roadmap → FAQ → Join → Footer
+How to deploy:
+1) Replace your repo content with this bundle (keep your .git if local).
+2) Commit → Push, Cloudflare Pages rebuilds.
+3) If old cache shows: Cloudflare → Caching → Purge Everything.
