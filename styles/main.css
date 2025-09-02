@@ -29,17 +29,17 @@ body::after{
 @keyframes ambient{0%{opacity:.75}20%{opacity:.9}35%{opacity:.6}55%{opacity:.95}75%{opacity:.7}100%{opacity:.8}}
 
 /* header */
-header{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--border);
-  background:linear-gradient(180deg,rgba(10,11,16,.8),rgba(10,11,16,.4));backdrop-filter:blur(10px)}
-header .row{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-.logo-top{display:flex;align-items:center;gap:10px}
-.brand{font-family:Anton, sans-serif;letter-spacing:.8px;font-size:22px}
-nav a{margin-left:18px;color:var(--muted)} nav a:hover{color:var(--fg)}
-.btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800;letter-spacing:.3px;
-  background:linear-gradient(180deg,var(--accent),#22c800);color:#0b0d0f;border:1px solid rgba(57,255,20,.6);
-  box-shadow:0 0 28px rgba(57,255,20,.35), inset 0 0 10px rgba(255,255,255,.12);transition:transform .15s}
-.btn:hover{transform:translateY(-1px)} .btn.glow-pink{background:linear-gradient(180deg,var(--pink),#ff1592);border-color:rgba(255,59,208,.6);box-shadow:0 0 28px rgba(255,59,208,.45)}
-.btn.outline{background:transparent;color:var(--fg);border:1px solid var(--border)}
+header{
+  position:sticky;top:0;z-index:20;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(10,11,16,.85),rgba(10,11,16,.5));
+  backdrop-filter:blur(10px)
+}
+header .row{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo-top{display:flex;align-items:center;gap:12px}
+.brand{font-family:Anton, sans-serif;letter-spacing:1px;font-size:24px}
+.main-nav a{margin-left:20px;color:var(--fg);opacity:.82;text-transform:uppercase;font-weight:700;letter-spacing:.4px}
+.main-nav a:hover{opacity:1}
 
 /* hero */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border);text-align:center}
@@ -54,14 +54,21 @@ nav a{margin-left:18px;color:var(--muted)} nav a:hover{color:var(--fg)}
 .cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 
 /* neon lamps */
-.neon{position:absolute;top:50px;bottom:50px;width:16px;border-radius:10px}
-.neon.left{left:16px;background:linear-gradient(180deg,var(--pink),var(--vio));box-shadow:0 0 22px var(--pink),0 0 70px var(--vio),0 0 150px rgba(255,59,208,.45);animation:flickL 2.6s infinite steps(60,end)}
-.neon.right{right:16px;background:linear-gradient(180deg,var(--cyan),var(--vio));box-shadow:0 0 22px var(--cyan),0 0 70px var(--vio),0 0 150px rgba(40,224,255,.45);animation:flickR 3.1s infinite steps(70,end)}
-.neon::before{content:"";position:absolute;inset:0;border-radius:10px;background:radial-gradient(60% 50% at 50% 50%, rgba(255,255,255,.55), transparent 70%);mix-blend-mode:screen;filter:blur(1.8px);opacity:.9}
-.neon::after{content:"";position:absolute;inset:3px;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,.1));mix-blend-mode:screen;opacity:.75;filter:blur(2px)}
-@keyframes flickL{0%{opacity:.25}3%{opacity:.9}7%{opacity:.45}10%{opacity:.98}13%{opacity:.35}20%{opacity:.9}45%{opacity:.62}60%{opacity:1}70%{opacity:.55}85%{opacity:.96}100%{opacity:.78}}
-@keyframes flickR{0%{opacity:.2}5%{opacity:.85}9%{opacity:.4}12%{opacity:.97}18%{opacity:.38}30%{opacity:.9}55%{opacity:.6}68%{opacity:1}82%{opacity:.57}96%{opacity:.95}100%{opacity:.73}}
+.neon{position:absolute;top:54px;bottom:54px;width:16px;border-radius:10px}
+.neon.left{left:3.5%;}
+.neon.right{right:3.5%;}
 
+/* крепёж и кабель */
+.neon .mount, .neon .wire{position:absolute;left:50%;transform:translateX(-50%);background:#0b0d12;opacity:.8}
+.neon .mount{top:-14px;width:26px;height:8px;border-radius:4px;box-shadow:0 2px 0 #06070b}
+.neon .wire{top:-40px;width:2px;height:24px;border-radius:2px;opacity:.6}
+
+/* glow уже был — усилим лёгкий spill на стену вокруг лампы */
+.neon::before{
+  content:"";position:absolute;inset:-40px -90px;border-radius:40px;
+  background:radial-gradient(80% 60% at 50% 50%, rgba(255,255,255,.25), transparent 70%);
+  mix-blend-mode:screen;filter:blur(14px);opacity:.55;pointer-events:none
+}
 /* stats + sections */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px auto 0;max-width:920px}
 @media (max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
