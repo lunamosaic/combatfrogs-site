@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+<<<<<<< HEAD
   <image href="frog-face.png" x="0" y="0" width="1000" height="1000"/>
 </svg>
+=======
+  <image href="data:image/png;base64,..." x="0" y="0" width="1000" height="1000"/>
+</svg>
+>>>>>>> b4f22476fce8752d28a3f2c562db85037c808b90
