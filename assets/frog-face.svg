@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Combat Frogs — static frog face -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
-  <image href="/assets/frog-face.png" x="0" y="0" width="1000" height="1000"/>
+  <image href="data:image/png;base64,..." x="0" y="0" width="1000" height="1000"/>
 </svg>
