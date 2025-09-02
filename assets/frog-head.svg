@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-200 -180 400 360">
+  <defs>
+    <radialGradient id="face" cx="0" cy="-0.1" r="1">
+      <stop offset="0" stop-color="#1AA5A0"/>
+      <stop offset="1" stop-color="#0C7E76"/>
+    </radialGradient>
+  </defs>
+  <!-- head shape -->
+  <path d="M -150 -20
+           C -170 -120, -80 -160, -40 -120
+             C -20 -140,  20 -140,  40 -120
+             C  80 -160, 170 -120, 150 -20
+             C 140  80,  80 120,   0 120
+             C -80 120, -140 80,  -150 -20 Z"
+        fill="url(#face)" stroke="#0ad9c8" stroke-opacity=".35" stroke-width="4"/>
+  <!-- eyes whites -->
+  <ellipse cx="-70" cy="-60" rx="34" ry="24" fill="#fff"/>
+  <ellipse cx="70"  cy="-60" rx="34" ry="24" fill="#fff"/>
+  <!-- pupils -->
+  <circle cx="-70" cy="-58" r="10" fill="#101318"/>
+  <circle cx="70"  cy="-58" r="10" fill="#101318"/>
+  <!-- eyelids (animate ry to blink) -->
+  <ellipse id="lidL" cx="-70" cy="-60" rx="34" ry="0.1" fill="#1AA5A0">
+    <animate attributeName="ry" values="0.1;24;0.1" dur="3.6s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse id="lidR" cx="70" cy="-60" rx="34" ry="0.1" fill="#1AA5A0">
+    <animate attributeName="ry" values="0.1;24;0.1" dur="4.8s" begin="1.2s" repeatCount="indefinite"/>
+  </ellipse>
+  <!-- mouth -->
+  <path d="M -70 20 Q 0 48 70 20" fill="none" stroke="#071e1d" stroke-width="6" stroke-linecap="round"/>
+</svg>
