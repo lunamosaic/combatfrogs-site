@@ -1,26 +1,13 @@
-# Combat Frogs — сайт (Neon v5)
+# Combat Frogs — site (Neon v6, EN)
 
-Этот репозиторий готов для деплоя на Cloudflare Pages (через GitHub).
+All copy is in **English**. Structure: Hero/CTA → Stats → Preview/Gallery → Links → Utility → Roadmap → FAQ → WL → Footer.
 
-## Структура
-- `index.html` — главная страница
-- `styles/main.css` — стили
-- `styles/main.js` — скрипты (аккордеон, лайтбокс, плавный скролл, год в футере)
-- `assets/` — логотипы, фавиконки, OG-картинка
-  - `logo-original.png` — твой логотип (замени на свой исходник/SVG)
-  - `logo-gear-only.svg` — отдельная шестерня (крутится под логотипом)
-  - `favicon.(svg|png)`, `apple-touch-icon.png`, `og-cover.jpg`
-- `gallery/1.webp … 8.webp` — превью работ
+Update: edit files → Commit → Push (Cloudflare Pages builds automatically).
+
+Key files:
+- `index.html`, `styles/main.css`, `styles/main.js`
+- `assets/logo-original.png` (replace with your final logo or SVG)
+- `assets/logo-gear-only.svg` (rotates under the logo — remove `.spin` class to stop)
+- `assets/favicon.(svg|png)`, `apple-touch-icon.png`, `og-cover.jpg`
+- `gallery/1.webp … 8.webp`
 - `404.html`, `robots.txt`, `sitemap.xml`
-
-## Как обновлять
-1. Меняешь файл(ы) → в GitHub Desktop **Commit** → **Push**.
-2. Cloudflare Pages сам пересоберёт сайт.
-
-## Настройка логотипа
-- Замени `assets/logo-original.png` на свой исходник (лучше `logo-original.svg`).  
-- Если хочешь анимацию только шестерни — оставь/замени `assets/logo-gear-only.svg`. В `index.html` она уже подключена и крутится (класс `.spin`). Чтобы остановить — убери класс `.spin` у тега `<img class="gear">`.
-
-## Полезно
-- Метатеги для Telegram/Twitter уже добавлены. Заменить картинку превью → `assets/og-cover.jpg`.
-- 404/robots/sitemap — настроены.
