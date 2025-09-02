@@ -1,13 +1,16 @@
-# Combat Frogs — site (Neon v6, EN)
+# Combat Frogs — clean build (EN)
 
-All copy is in **English**. Structure: Hero/CTA → Stats → Preview/Gallery → Links → Utility → Roadmap → FAQ → WL → Footer.
+How to deploy quickly:
+1) Replace repo files with the content of this archive.
+2) Commit → Push.
+3) Cloudflare Pages will rebuild.
+4) If old content persists: Cloudflare → Caching → Purge Everything.
 
-Update: edit files → Commit → Push (Cloudflare Pages builds automatically).
+Where to edit:
+- `index.html` — page markup & copy
+- `styles/main.css` — colors, neon, layout
+- `styles/main.js` — accordion, smooth scroll, lightbox
+- `assets/` — icons
+- `gallery/` — preview tiles
 
-Key files:
-- `index.html`, `styles/main.css`, `styles/main.js`
-- `assets/logo-original.png` (replace with your final logo or SVG)
-- `assets/logo-gear-only.svg` (rotates under the logo — remove `.spin` class to stop)
-- `assets/favicon.(svg|png)`, `apple-touch-icon.png`, `og-cover.jpg`
-- `gallery/1.webp … 8.webp`
-- `404.html`, `robots.txt`, `sitemap.xml`
+Sections: Hero → Preview → Links → Utility → Roadmap → FAQ → Join → Footer
