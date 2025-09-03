@@ -5,15 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Combat Frogs — Unit Era. Art First.</title>
   <meta name="description" content="Neon street vibe, 2010s energy. Utility for real holders: 3D files, sketches, drops." />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="/assets/favicon.png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <link rel="stylesheet" href="/styles/main.css" />
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="wrap row">
     <a id="header-logo" class="logo-top" href="/">
@@ -28,24 +25,22 @@
   </div>
 </header>
 
-<!-- HERO: brick wall + neon text + side neon lamps -->
 <section class="hero hero-v2" id="home">
-  <!-- LAMPS -->
-  <div class="tube left" aria-hidden="true">
-    <div class="stick"></div>
-    <div class="mount"></div>
-  </div>
-  <div class="tube right" aria-hidden="true">
-    <div class="stick"></div>
-    <div class="mount"></div>
-  </div>
+  <!-- боковые лампы остаются -->
+  <div class="tube left" aria-hidden="true"><div class="stick"></div></div>
+  <div class="tube right" aria-hidden="true"><div class="stick"></div></div>
 
   <div class="wrap hero-inner">
-    <h1 class="neon-title">
-      <span class="line cyan">COMBAT FROGS:</span>
-      <span class="line pink">UNIT</span>
-      <span class="soon">SOON</span>
-    </h1>
+    <!-- НЕОНОВАЯ НАДПИСЬ ИЗ ОДНОГО PNG, РАЗБИТАЯ НА СЛОИ -->
+    <div class="neon-title-layers">
+      <!-- базовый невидимый слой даёт высоту контейнеру -->
+      <img class="base" src="/assets/neon-title.png" alt="COMBAT FROGS: UNIT — SOON" />
+      <!-- слои-«маски» с разной частотой мерцания -->
+      <img class="layer combat cyan" src="/assets/neon-title.png" alt="" aria-hidden="true" />
+      <img class="layer frogs  cyan" src="/assets/neon-title.png" alt="" aria-hidden="true" />
+      <img class="layer unit   pink" src="/assets/neon-title.png" alt="" aria-hidden="true" />
+      <img class="layer soon   pink" src="/assets/neon-title.png" alt="" aria-hidden="true" />
+    </div>
 
     <p class="subtitle">2010s streetwear energy. Neon club vibe. Utility for real holders: 3D files, sketches, drops.</p>
 
@@ -63,7 +58,8 @@
   </div>
 </section>
 
-<!-- PREVIEW -->
+<section id="about"><div class="wrap"><h2>About</h2><p class="sm">Style-first NFT project with 2010s streetwear DNA. Honest drops.</p></div></section>
+
 <section id="featured">
   <div class="wrap">
     <h2>Preview</h2>
@@ -71,14 +67,14 @@
       <div class="frame"><div class="ph"></div></div>
       <div>
         <div class="gallery" id="gal">
-          <div class="tile"><img src="/gallery/1.webp" alt="Artwork 1" /></div>
-          <div class="tile"><img src="/gallery/2.webp" alt="Artwork 2" /></div>
-          <div class="tile"><img src="/gallery/3.webp" alt="Artwork 3" /></div>
-          <div class="tile"><img src="/gallery/4.webp" alt="Artwork 4" /></div>
-          <div class="tile"><img src="/gallery/5.webp" alt="Artwork 5" /></div>
-          <div class="tile"><img src="/gallery/6.webp" alt="Artwork 6" /></div>
-          <div class="tile"><img src="/gallery/7.webp" alt="Artwork 7" /></div>
-          <div class="tile"><img src="/gallery/8.webp" alt="Artwork 8" /></div>
+          <div class="tile"><img src="/gallery/1.webp" alt=""></div>
+          <div class="tile"><img src="/gallery/2.webp" alt=""></div>
+          <div class="tile"><img src="/gallery/3.webp" alt=""></div>
+          <div class="tile"><img src="/gallery/4.webp" alt=""></div>
+          <div class="tile"><img src="/gallery/5.webp" alt=""></div>
+          <div class="tile"><img src="/gallery/6.webp" alt=""></div>
+          <div class="tile"><img src="/gallery/7.webp" alt=""></div>
+          <div class="tile"><img src="/gallery/8.webp" alt=""></div>
         </div>
         <p class="sm">Click a tile to view full size.</p>
       </div>
@@ -86,7 +82,6 @@
   </div>
 </section>
 
-<!-- LINKS -->
 <section id="links">
   <div class="wrap">
     <h2>Links & Hubs</h2>
@@ -101,58 +96,22 @@
   </div>
 </section>
 
-<!-- UTILITY -->
-<section id="utility">
-  <div class="wrap">
-    <h2>Utility</h2>
-    <div class="accordion">
-      <div class="qa"><div class="q"><span>Holder perks</span><b>+</b></div><div class="a"><div class="a-inner">3D models, sketches, early collabs. Token-gate later.</div></div></div>
-      <div class="qa"><div class="q"><span>2010s streetwear DNA</span><b>+</b></div><div class="a"><div class="a-inner">G-Unit vibe, honest drops. No overpromises — only work.</div></div></div>
-      <div class="qa"><div class="q"><span>Allowlist</span><b>+</b></div><div class="a"><div class="a-inner">Form below. Low noise, clean comms.</div></div></div>
-    </div>
-  </div>
-</section>
+<section id="utility"><div class="wrap"><h2>Utility</h2><p class="sm">3D models, sketches, early collabs. Token-gate later.</p></div></section>
+<section id="roadmap"><div class="wrap"><h2>Roadmap</h2><p class="sm">Phase 1: site + WL → Phase 2: utility → Phase 3: mint.</p></div></section>
+<section id="faq"><div class="wrap"><h2>FAQ</h2><p class="sm">Which chain? TBA on X.</p></div></section>
 
-<!-- ROADMAP -->
-<section id="roadmap">
-  <div class="wrap">
-    <h2>Roadmap</h2>
-    <div class="accordion">
-      <div class="qa open"><div class="q"><span>Phase 1 — Site & WL</span><b>–</b></div><div class="a" style="max-height:240px"><div class="a-inner">Hub launch, allowlist, final rarity pass.</div></div></div>
-      <div class="qa"><div class="q"><span>Phase 2 — Utility & 3D</span><b>+</b></div><div class="a"><div class="a-inner">Private downloads for holders, collabs, token-gate tests.</div></div></div>
-      <div class="qa"><div class="q"><span>Phase 3 — Mint</span><b>+</b></div><div class="a"><div class="a-inner">Fair mint. Style first.</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="wrap">
-    <h2>FAQ</h2>
-    <div class="accordion">
-      <div class="qa"><div class="q"><span>Which chain?</span><b>+</b></div><div class="a"><div class="a-inner">TBA — announced on X.</div></div></div>
-      <div class="qa"><div class="q"><span>Is the OG collection required?</span><b>+</b></div><div class="a"><div class="a-inner">OG on OpenSea is history/reference only.</div></div></div>
-      <div class="qa"><div class="q"><span>How to join WL?</span><b>+</b></div><div class="a"><div class="a-inner">Submit wallet & contact in the form below.</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- JOIN -->
 <section id="join">
   <div class="wrap" style="text-align:center">
     <h2>Join Allowlist</h2>
     <p class="sm">Drop your wallet & contact. We’ll ping before the drop.</p>
-    <div class="frame" style="display:inline-block;min-width:280px"><div style="padding:18px">
-      <p class="sm">Place a link to your Google Form / Tally here:</p><a class="btn outline" href="#" target="_blank" rel="noopener">Open form</a>
-    </div></div>
+    <a class="btn outline" href="#" target="_blank" rel="noopener">Open form</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="wrap footer">
     <div class="tiny">© <span id="y"></span> Combat Frogs — Style first.</div>
-    <div class="tiny">X: <a href="https://x.com/awaoriginal" target="_blank" rel="noopener">@awaoriginal</a> · OpenSea: <a href="https://opensea.io/collection/combat-frogs" target="_blank" rel="noopener">Combat Frogs (OG)</a></div>
+    <div class="tiny">X: <a href="https://x.com/awaoriginal" target="_blank" rel="noopener">@awaoriginal</a></div>
   </div>
 </footer>
 
