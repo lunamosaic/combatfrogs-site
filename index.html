@@ -7,22 +7,21 @@
 <meta name="description" content="2010s streetwear energy. Neon club vibe. Utility for real holders: 3D files, sketches, drops." />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<!-- Fonts -->
+<!-- Google Fonts: Anton for everything -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#0a0b10; --fg:#eaf0f6; --muted:#9fb0c2;
-  --accent:#39ff14; --ice:#02bdf0; --ice2:#0198c4;
+  --bg:#0a0b10; --fg:#eaf0f6; --muted:#b4c2d1;
+  --ice:#02bdf0; --ice2:#0198c4;
   --pink:#ff3bd0; --pink2:#ff1f54; --vio:#7a5cff; --cyan:#28e0ff;
   --border:#1b2030; --maxw:1200px;
-  --font-head:'Space Grotesk', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-  --font-body:'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  --font:'Anton', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body)}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);letter-spacing:.02em}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
@@ -30,14 +29,12 @@ img{max-width:100%;display:block}
 /* Header */
 .site-header{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,rgba(10,11,16,.9),rgba(10,11,16,.6));backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-weight:700;letter-spacing:.8px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.06em}
 .brand-dot{width:16px;height:16px;border-radius:50%;background:#39ff14;box-shadow:0 0 12px #39ff14,0 0 28px #39ff14}
 .main-nav{display:flex;gap:18px;align-items:center}
-.main-nav a{font-family:var(--font-head);text-transform:uppercase;font-weight:700;letter-spacing:.06em;opacity:.95}
-.btn{display:inline-block;padding:10px 16px;border-radius:12px;font-family:var(--font-head);font-weight:700;letter-spacing:.02em}
-.btn-green{background:linear-gradient(180deg,#39ff14,#26cc08);color:#08140a;border:1px solid rgba(57,255,20,.5);box-shadow:0 0 20px rgba(57,255,20,.35)}
+.main-nav a{text-transform:uppercase;opacity:.95}
+.btn{display:inline-block;padding:10px 16px;border-radius:12px;font-weight:700;letter-spacing:.02em}
 .btn-dark{background:#0e121a;color:var(--fg);border:1px solid var(--border)}
-/* NEW: whitelist button color */
 .btn-ice{background:linear-gradient(180deg,var(--ice),var(--ice2));color:#02141a;border:1px solid rgba(2,189,240,.6);box-shadow:0 0 18px rgba(2,189,240,.3)}
 
 /* ===== HERO ===== */
@@ -50,7 +47,7 @@ img{max-width:100%;display:block}
 @media (max-width:800px){.hero .hero-inner{min-height:68vh;padding:64px 0}}
 .hero-bg{position:absolute;inset:0;z-index:0;background-position:center;background-size:cover;background-repeat:no-repeat;filter:contrast(1.02) brightness(.9)}
 
-/* Мягкий отсвет на стене */
+/* Мягкий отсвет на стене (от ламп) */
 .wall-glow{
   position:absolute; top:8%; bottom:10%; width:34vw; max-width:520px; z-index:1;
   pointer-events:none; mix-blend-mode:screen; opacity:.40; filter:blur(20px);
@@ -68,14 +65,14 @@ img{max-width:100%;display:block}
 }
 @keyframes glowPulse { 0%{opacity:.34} 50%{opacity:.78} 100%{opacity:.34} }
 
-/* Лампы: без контура, “перебои” */
+/* Лампы: без контура, «перебои» */
 .tube{position:absolute;top:12%;bottom:14%;width:16px;z-index:2}
 .tube.left{left:6%} .tube.right{right:6%}
 .tube .stick{position:absolute;inset:0;border-radius:12px;background:transparent}
 .tube .stick::before{
   content:"";position:absolute;left:2px;right:2px;top:2px;bottom:2px;border-radius:10px;
   background:linear-gradient(180deg, rgba(255,255,255,.97), rgba(255,255,255,.97)) padding-box,
-             linear-gradient(180deg, var(--pink), var(--pink2)) border-box;
+             linear-gradient(180deg, #ff3bd0, #ff1f54) border-box;
   -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0) border-box;
   -webkit-mask-composite:xor;mask-composite:exclude;border:2px solid transparent;
   mask-image:linear-gradient(180deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,.6) 13%, rgba(0,0,0,1) 21%, rgba(0,0,0,.55) 29%, rgba(0,0,0,1) 41%, rgba(0,0,0,.6) 57%, rgba(0,0,0,1) 73%, rgba(0,0,0,.75) 100%);
@@ -83,7 +80,7 @@ img{max-width:100%;display:block}
 }
 .tube.right .stick::before{
   background:linear-gradient(180deg, rgba(255,255,255,.97), rgba(255,255,255,.97)) padding-box,
-             linear-gradient(180deg, var(--cyan), var(--vio)) border-box;
+             linear-gradient(180deg, #28e0ff, #7a5cff) border-box;
   animation-name:tubeCoreR;animation-duration:3.7s
 }
 .tube .stick::after{
@@ -101,18 +98,20 @@ img{max-width:100%;display:block}
 @keyframes tubeHaloL{0%{opacity:.55}24%{opacity:.96}30%{opacity:.5}48%{opacity:.92}56%{opacity:.46}74%{opacity:.95}82%{opacity:.5}100%{opacity:.55}}
 @keyframes tubeHaloR{0%{opacity:.5}22%{opacity:.96}28%{opacity:.48}47%{opacity:.92}54%{opacity:.45}76%{opacity:.94}84%{opacity:.48}100%{opacity:.5}}
 
-/* Надпись: статик + “SOON” с электричеством */
+/* Надпись: статик (без подсветки) + SUN с электричеством */
 .sign-wrap{position:relative;width:min(520px,64vw);margin:0 auto 6px;z-index:3}
-.sign-static{width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 0 2px rgba(0,0,0,.45)) drop-shadow(0 0 12px rgba(40,224,255,.32))}
+.sign-static{width:100%;height:auto;object-fit:contain;filter:none} /* без glow — как “встроено” */
 
-/* Доп. аура вокруг слова — мягкий газ, пульсирует */
-.sign-wrap::after{
-  content:""; position:absolute; inset:-8% -10%; z-index:2; pointer-events:none;
+/* Обёртка только для SUN, чтобы дать розовую ауру вокруг */
+.soon-wrap{position:absolute;inset:0;pointer-events:none}
+.soon-wrap::after{
+  content:""; position:absolute; inset:-8% -10%; z-index:0; pointer-events:none;
   mix-blend-mode:screen; opacity:.55; filter:blur(18px);
+  /* чисто розовая аура */
   background:radial-gradient(60% 60% at 50% 50%,
     rgba(255,59,208,.40) 0%,
-    rgba(122,92,255,.28) 35%,
-    rgba(40,224,255,.18) 55%,
+    rgba(255,59,208,.28) 38%,
+    rgba(255,59,208,.16) 58%,
     rgba(0,0,0,0) 75%);
   animation:soonAura 4.4s ease-in-out infinite;
 }
@@ -126,14 +125,14 @@ img{max-width:100%;display:block}
   100% { opacity:.55; filter:blur(18px) }
 }
 
-/* “SOON” — резкие провалы/вспышки + лёгкий джиттер */
+/* SUN — резкие провалы/вспышки + лёгкий джиттер */
 .sign-soon{
-  position:absolute; inset:0; width:100%; height:auto; object-fit:contain; pointer-events:none;
+  position:relative; z-index:1; width:100%; height:auto; object-fit:contain; pointer-events:none;
   filter:
     drop-shadow(0 0 2px rgba(0,0,0,.55))
     drop-shadow(0 0 16px rgba(255,59,208,.60))
-    drop-shadow(0 0 26px rgba(122,92,255,.38))
-    drop-shadow(0 0 40px rgba(40,224,255,.22));
+    drop-shadow(0 0 28px rgba(255,59,208,.42))
+    drop-shadow(0 0 44px rgba(255,59,208,.25));
   animation: soonFlick 3.7s infinite, soonJitter .85s infinite steps(10,end);
   transform-origin:center;
   will-change: opacity, filter, transform;
@@ -143,16 +142,16 @@ img{max-width:100%;display:block}
   5%   { opacity:.35; filter:brightness(.7)  saturate(.9) }
   8%   { opacity:1;   filter:brightness(1.05) saturate(1.1) }
   13%  { opacity:.18; filter:brightness(.5)  saturate(.8) }
-  14%  { opacity:1;   filter:brightness(1.1) saturate(1.15) }
+  14%  { opacity:1;   filter:brightness(1.12) saturate(1.18) }
   28%  { opacity:.92; filter:brightness(.95) saturate(1.0) }
-  31%  { opacity:0;   filter:brightness(.4)  saturate(.7) }  /* вырубило */
-  33%  { opacity:1;   filter:brightness(1.12) saturate(1.2) }/* вспышка */
+  31%  { opacity:0;   filter:brightness(.4)  saturate(.7) }
+  33%  { opacity:1;   filter:brightness(1.15) saturate(1.22) }
   47%  { opacity:.86; filter:brightness(.96) saturate(1.0) }
   53%  { opacity:0;   filter:brightness(.4)  saturate(.7) }
-  55%  { opacity:1;   filter:brightness(1.1)  saturate(1.15) }
+  55%  { opacity:1;   filter:brightness(1.12) saturate(1.18) }
   71%  { opacity:.9;  filter:brightness(.98) saturate(1.0) }
   82%  { opacity:.32; filter:brightness(.6)  saturate(.85) }
-  85%  { opacity:1;   filter:brightness(1.08) saturate(1.12) }
+  85%  { opacity:1;   filter:brightness(1.1)  saturate(1.15) }
   100% { opacity:.98; filter:brightness(1)    saturate(1.05) }
 }
 @keyframes soonJitter{
@@ -168,7 +167,7 @@ img{max-width:100%;display:block}
 .tagline{max-width:860px;text-align:center;color:var(--muted)}
 .cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 .section{padding:56px 0;border-bottom:1px solid var(--border)}
-h2{margin:0 0 14px;font:700 clamp(28px,4.2vw,44px)/1 var(--font-head);letter-spacing:.02em}
+h2{margin:0 0 14px;font:700 clamp(28px,4.2vw,44px)/1 var(--font);letter-spacing:.02em}
 .lead{color:var(--muted);max-width:860px}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
@@ -211,8 +210,12 @@ h2{margin:0 0 14px;font:700 clamp(28px,4.2vw,44px)/1 var(--font-head);letter-spa
 
   <div class="hero-inner wrap">
     <div class="sign-wrap">
+      <!-- статичная фраза (без подсветки) -->
       <img class="sign-static" src="assets/title-static.png?v=1" alt="COMBAT FROGS: UNIT">
-      <img class="sign-soon"   src="assets/soon.png?v=1"         alt="SOON">
+      <!-- SUN анимирован: отдельная обёртка + аура + мерцание -->
+      <div class="soon-wrap">
+        <img class="sign-soon" src="assets/soon.png?v=1" alt="SUN">
+      </div>
     </div>
 
     <p class="tagline">2010s streetwear energy. Neon club vibe. Utility for real holders: 3D files, sketches, drops.</p>
