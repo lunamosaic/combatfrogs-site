@@ -9,10 +9,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-/**
- * Подхватываем твои SVG без переименований.
- * Для каждого <img> читаем data-candidates и пробуем пути по очереди.
- */
+// подхватываем твои SVG без переименований: берём первый существующий из списка
 function tryLoad(img){
   const list=(img.getAttribute('data-candidates')||'').split(',').map(s=>s.trim()).filter(Boolean);
   if(!list.length) return;
