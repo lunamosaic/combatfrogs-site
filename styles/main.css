@@ -255,3 +255,37 @@ h2{margin:0 0 14px;font-size:clamp(28px,4.2vw,44px);font-weight:800}
   .btn { padding: 10px 14px; font-size: 14px; }
   .cta-row { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
 }
+/* ===== Neon Modal ===== */
+.nl-modal{position:fixed;inset:0;z-index:1000;display:none}
+.nl-modal[aria-hidden="false"]{display:block}
+
+.nl-backdrop{position:absolute;inset:0;background:rgba(5,5,10,.65);
+  backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);}
+
+.nl-dialog{
+  position:relative; margin:6vh auto 0; max-width:720px; width:92%;
+  background: rgba(5,6,10,.85);
+  border:1px solid rgba(2,189,240,.55);
+  border-radius:16px; padding:22px 20px 18px;
+  box-shadow:
+    0 0 18px rgba(2,189,240,.35),
+    0 0 28px rgba(255,59,203,.25),
+    inset 0 0 40px rgba(2,189,240,.08);
+}
+
+.nl-close{
+  position:absolute; top:8px; right:10px; width:34px; height:34px;
+  border:none; border-radius:8px; cursor:pointer; color:#fff; font-size:22px;
+  background:linear-gradient(135deg, rgba(2,189,240,.25), rgba(255,59,203,.25));
+  box-shadow:0 0 10px rgba(2,189,240,.35);
+}
+.nl-close:hover{filter:brightness(1.15)}
+
+.nl-sub{
+  margin:0 0 14px; color:#cfefff; opacity:.9;
+  font-family:'Anton',system-ui,sans-serif; letter-spacing:.02em;
+}
+
+/* используем стили формы из прошлого шага; на всякий — чуть сужаем сетку на модале */
+.nl-dialog .neon-form{max-width: 640px}
+@media (max-width:780px){ .nl-dialog{ margin:10vh auto 0; padding:18px 16px } }

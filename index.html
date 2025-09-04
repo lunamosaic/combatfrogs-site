@@ -140,7 +140,8 @@ h2{margin:0 0 14px;font:700 clamp(28px,4.2vw,44px)/1 var(--font)}
 Each piece is crafted with street DNA drawn from the rap game, breakdance legacy, and cap culture.
 Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming Soon.</p>
     <div class="cta-row">
-      <a class="btn btn-ice" href="#wl">Join Allowlist</a>
+      <!-- было <a class="btn btn-pink" href="#wl">Join Allowlist</a> -->
+<button id="open-wl" class="btn btn-pink" type="button">Join Allowlist</button>
       <a class="btn btn-dark" href="https://opensea.io/collection/combat-frogs" target="_blank">OpenSea (OG)</a>
     </div>
   </div>
@@ -196,6 +197,28 @@ Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming
 </section>
 
 <footer class="site-footer"><div class="wrap">© <span id="y"></span> Combat Frogs</div></footer>
+  <!-- ===== Allowlist Modal ===== -->
+<div id="wl-modal" class="nl-modal" aria-hidden="true">
+  <div class="nl-backdrop" data-close></div>
+
+  <div class="nl-dialog" role="dialog" aria-modal="true" aria-labelledby="wl-title">
+    <button class="nl-close" type="button" title="Close" data-close>×</button>
+
+    <h3 id="wl-title" class="neon-title" style="margin:0 0 10px;">Join Allowlist</h3>
+    <p class="nl-sub">Fill the form below — we’ll ping you before mint.</p>
+
+    <!-- ВСТАВЬ СВОЙ Apps Script URL (…/exec) -->
+    <form id="allowlist-form" action="https://script.google.com/macros/s/AKfycbwWViqy8DzWVyKjGAnmeh5m-b3aVF3rWnTzgaj4EkSKZvlxzpiC3GY3aMLxH7vcHrrGZw/exec" method="POST" class="neon-form">
+      <input class="full" type="text"   name="wallet"  placeholder="Wallet address" required>
+      <input              type="email"  name="email"   placeholder="Email" required>
+      <input              type="text"   name="twitter" placeholder="Twitter @handle">
+      <input              type="text"   name="discord" placeholder="Discord">
+      <textarea class="full" name="note" placeholder="Any notes (optional)"></textarea>
+      <button class="full" type="submit">Submit</button>
+      <p id="wl-msg" class="full form-msg" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
