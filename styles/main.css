@@ -165,12 +165,31 @@ img{max-width:100%;display:block}
 }
 
 /* Остальные секции */
+/* Hero description: центр и ограничение ширины */
+.hero .tagline,
 .hero-desc {
-  max-width: 800px;       /* ограничение ширины текста */
-  margin: 0 auto;         /* выравнивание по центру */
-  text-align: center;     /* центрирование текста */
-  line-height: 1.5;       /* читаемость */
-  font-size: 1.2rem;      /* размер можно варьировать */
+  display: block;                    /* на всякий случай */
+  width: min(800px, 90vw);           /* ограничение ширины + адаптив */
+  margin-inline: auto;               /* по центру горизонтально */
+  text-align: center;                /* выравнивание текста */
+  line-height: 1.5;                  /* читаемость */
+  font-size: clamp(16px, 1.2rem, 20px);
+}
+
+/* если родитель — flex, не даём растягивать и сжимать */
+.hero .tagline,
+.hero-desc {
+  flex: 0 0 auto;
+}
+
+/* Мобильная корректировка (чуть уже и помельче) */
+@media (max-width: 600px) {
+  .hero .tagline,
+  .hero-desc {
+    width: min(92vw, 640px);
+    font-size: clamp(15px, 4.2vw, 18px);
+    line-height: 1.45;
+  }
 }
 .cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 
