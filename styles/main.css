@@ -18,21 +18,20 @@ img{max-width:100%;display:block}
 .main-nav a{text-transform:uppercase;font-weight:800;opacity:.92}
 .btn{display:inline-block;padding:10px 16px;border-radius:12px;font-weight:800}
 .btn-green{background:linear-gradient(180deg,var(--accent),#26cc08);color:#08140a;border:1px solid rgba(57,255,20,.5);box-shadow:0 0 20px rgba(57,255,20,.35)}
-.btn-pink{background:linear-gradient(180deg,var(--pink),var(--pink2));border:1px solid rgba(255,59,208,.5);box-shadow:0 0 22px rgba(255,59,208,.35)}
+.btn-pink{background:linear-gradient(180deg,var(--pink),var(--pink2));border:1px solid rgba(255,59,208,.5);box-shadow:0 0 18px rgba(255,59,208,.32)}
 .btn-dark{background:#0e121a;color:var(--fg);border:1px solid var(--border)}
 
-/* ===== HERO (optimized) ===== */
+/* HERO */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
 .hero .hero-inner{position:relative; z-index:1; min-height:74vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;padding:72px 0}
 
-/* Фон кирпича — как обычный <div> с background-image (ставим в JS) */
-#heroBg{
+.hero-bg{
   position:absolute; inset:0; z-index:0;
   background-position:center; background-size:cover; background-repeat:no-repeat;
-  filter:contrast(1.02) brightness(.92);
+  filter:contrast(1.02) brightness(.9);
 }
 
-/* Лампы — упрощённые, без тяжёлых свечений */
+/* neon tubes */
 .tube{position:absolute;top:12%;bottom:14%;width:22px;z-index:2}
 .tube.left{left:3%} .tube.right{right:3%}
 .tube .stick{
@@ -43,29 +42,21 @@ img{max-width:100%;display:block}
 .tube .stick::before{
   content:"";position:absolute;left:5px;right:5px;top:5px;bottom:5px;border-radius:10px;background:#fff;
   background:linear-gradient(180deg,#ff49db 0%,#7a5cff 100%);
-  animation:tubeSoft 3.4s infinite ease-in-out;
+  animation:tubeSoft 3.6s infinite ease-in-out;
 }
 .tube.right .stick::before{ background:linear-gradient(180deg,#28e0ff 0%,#7a5cff 100%); }
-@keyframes tubeSoft{
-  0%{opacity:.78} 40%{opacity:1} 70%{opacity:.86} 100%{opacity:.78}
-}
+@keyframes tubeSoft{ 0%{opacity:.78} 50%{opacity:1} 100%{opacity:.78} }
 
-/* Вывеска: одна картинка + лёгкая подложка */
+/* Sign w/o backplate */
 .sign-wrap{ position:relative; width:min(560px,72vw); margin:0 auto 8px; z-index:3; }
-.sign-backplate{
-  position:absolute; inset:-14px -20px; border-radius:16px;
-  background:linear-gradient(180deg, rgba(8,10,14,.5), rgba(8,10,14,.28));
-  border:1px solid rgba(160,178,210,.1);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 6px 16px rgba(0,0,0,.28);
-  backdrop-filter: blur(1.5px);
-}
 .neon-sign{
   display:block; width:100%; height:auto; object-fit:contain;
-  /* очень лёгкий «контур» + неон-глоу (2 слоя вместо 5) */
+  /* только свечение вокруг надписи, без рамок */
   filter:
-    drop-shadow(0 0 1px rgba(0,0,0,.7))
-    drop-shadow(0 0 14px rgba(40,224,255,.65));
-  animation:neonFlick 3.5s infinite steps(80,end);
+    drop-shadow(0 0 1px rgba(0,0,0,.6))
+    drop-shadow(0 0 10px rgba(40,224,255,.35))
+    drop-shadow(0 0 18px rgba(255,59,208,.22));
+  animation:neonFlick 3.8s infinite steps(80,end);
 }
 @keyframes neonFlick{
   0%{opacity:.96} 6%{opacity:.54} 10%{opacity:1}
@@ -73,18 +64,23 @@ img{max-width:100%;display:block}
   78%{opacity:.9} 84%{opacity:.5} 88%{opacity:1} 100%{opacity:.96}
 }
 
-/* Остальной каркас */
-.tagline{color:var(--muted);max-width:860px;text-align:center}
-.cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;max-width:920px}
-@media (max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stat{padding:14px;border:1px solid var(--border);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01))}
-.stat .v{font-weight:800;font-size:18px}.stat .k{font-size:12px;color:var(--muted)}
+.tagline{max-width:860px;text-align:center;color:var(--muted)}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 
+/* Marquee */
+.marquee{overflow:hidden;width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
+.marquee-track{display:flex;gap:40px;white-space:nowrap;animation:marquee 22s linear infinite}
+.marquee span{padding:10px 0;font-weight:800;letter-spacing:.12em;opacity:.9}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* Sections */
 .section{padding:56px 0;border-bottom:1px solid var(--border)}
 h2{margin:0 0 14px;font-size:clamp(28px,4.2vw,44px);font-weight:800}
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
-.gallery .ph{aspect-ratio:1;border-radius:14px;border:1px solid var(--border);background:linear-gradient(135deg,#1b2030,#0d1017)}
+.lead{color:var(--muted);max-width:860px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{aspect-ratio:1;border-radius:14px;border:1px solid var(--border);background:linear-gradient(135deg,#1b2030,#0d1017)}
+.link-list{display:grid;gap:10px}
+.link-list a{padding:10px 14px;border-radius:10px;background:#0b0f15;border:1px solid var(--border)}
 
 .site-footer{padding:40px 0;text-align:center;color:var(--muted)}
