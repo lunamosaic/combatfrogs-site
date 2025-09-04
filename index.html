@@ -1,19 +1,112 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Combat Frogs — Unit Era. Art First.</title>
-  <meta name="description" content="2010s streetwear energy. Neon club vibe. Utility for real holders: 3D files, sketches, drops." />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles/main.css">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Combat Frogs — Unit Era. Art First.</title>
+<meta name="description" content="Combat Frogs: Unit is 5,000 hand-curated NFTs steeped in 2010s streetwear culture.
+Each piece is crafted with street DNA drawn from the rap game, breakdance legacy, and cap culture.
+Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming Soon." />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<!-- Google Fonts: Anton -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0b10; --fg:#eaf0f6; --muted:#b4c2d1;
+  --ice:#02bdf0; --ice2:#0198c4;
+  --pink:#ff3bd0; --pink2:#ff1f54;
+  --border:#1b2030; --maxw:1200px;
+  --font:'Anton', system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);letter-spacing:.02em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:30;background:rgba(10,11,16,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-size:clamp(20px,2.6vw,28px);font-weight:700;letter-spacing:.06em}
+.brand-dot{width:18px;height:18px;border-radius:50%;background:#39ff14;box-shadow:0 0 12px #39ff14,0 0 28px #39ff14}
+.main-nav{display:flex;gap:20px;align-items:center}
+.main-nav a{text-transform:uppercase;opacity:.95}
+.btn{padding:10px 16px;border-radius:12px;font-weight:700;letter-spacing:.02em}
+.btn-dark{background:#0e121a;color:var(--fg);border:1px solid var(--border)}
+.btn-ice{background:linear-gradient(180deg,var(--ice),var(--ice2));color:#02141a;border:1px solid rgba(2,189,240,.6);box-shadow:0 0 18px rgba(2,189,240,.3)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero .hero-inner{
+  position:relative; z-index:1; 
+  min-height:46vh;                 /* ↓ было 58vh → компактнее */
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;
+  padding:40px 0;                  /* ↓ было 56px → меньше высота */
+}
+.hero-bg{position:absolute;inset:0;z-index:0;background:center/cover no-repeat;filter:contrast(1.02) brightness(.9)}
+
+.wall-glow{position:absolute;top:8%;bottom:10%;width:34vw;max-width:520px;z-index:1;pointer-events:none;mix-blend-mode:screen;opacity:.40;filter:blur(20px);animation:glowPulse 5.2s ease-in-out infinite}
+.wall-glow.left{left:-8vw;background:radial-gradient(50% 60% at 60% 50%, rgba(255,59,208,.55) 0%, rgba(255,31,84,.34) 36%, rgba(122,92,255,.22) 58%, rgba(0,0,0,0) 78%);animation-duration:4.9s}
+.wall-glow.right{right:-8vw;background:radial-gradient(50% 60% at 40% 50%, rgba(40,224,255,.52) 0%, rgba(122,92,255,.30) 44%, rgba(0,0,0,0) 72%);animation-duration:5.8s;animation-delay:.6s}
+@keyframes glowPulse{0%{opacity:.34}50%{opacity:.78}100%{opacity:.34}}
+
+.tube{position:absolute;top:12%;bottom:14%;width:16px;z-index:2}
+.tube.left{left:6%} .tube.right{right:6%}
+.tube .stick{position:absolute;inset:0;border-radius:12px}
+.tube .stick::before{content:"";position:absolute;inset:2px;border-radius:10px;background:#fff;animation:tubeCore 3.5s infinite steps(30,end)}
+.tube .stick::after{content:"";position:absolute;inset:-22px;border-radius:18px;filter:blur(18px);opacity:.7;pointer-events:none;mix-blend-mode:screen;background:rgba(255,59,208,.6);animation:tubeHalo 4.7s infinite steps(50,end)}
+@keyframes tubeCore{0%{opacity:.8}20%{opacity:.3}22%{opacity:1}50%{opacity:.7}70%{opacity:.2}72%{opacity:1}100%{opacity:.8}}
+@keyframes tubeHalo{0%{opacity:.6}20%{opacity:.2}22%{opacity:.8}50%{opacity:.7}70%{opacity:.25}72%{opacity:.9}100%{opacity:.6}}
+
+/* Title */
+.sign-wrap{position:relative;width:min(520px,64vw);margin:0 auto 6px;z-index:3}
+.sign-static{width:100%;height:auto;object-fit:contain;filter:none}
+
+.soon-wrap{position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:center}
+.sign-soon{
+  position:relative;z-index:2;width:100%;height:auto;object-fit:contain;
+  filter:drop-shadow(0 0 16px rgba(255,59,208,.6)) drop-shadow(0 0 28px rgba(255,59,208,.4));
+  animation:soonFlick 3.7s infinite, soonJitter .9s infinite steps(10,end);
+}
+
+/* Аура только вокруг SUN — маска по PNG */
+.soon-wrap::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  -webkit-mask-image:url('assets/soon.png');mask-image:url('assets/soon.png');
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center;mask-position:center;
+  -webkit-mask-size:contain;mask-size:contain;
+  background:radial-gradient(circle,rgba(255,59,208,.45) 0%,rgba(255,59,208,.18) 70%,rgba(0,0,0,0) 100%);
+  filter:blur(16px);mix-blend-mode:screen;opacity:.6;
+  animation:soonAura 3.7s infinite;
+}
+
+@keyframes soonFlick{0%{opacity:.95}10%{opacity:.2}12%{opacity:1}30%{opacity:.85}32%{opacity:0}34%{opacity:1}60%{opacity:.9}62%{opacity:0}65%{opacity:1}100%{opacity:.95}}
+@keyframes soonAura{0%{opacity:.6}10%{opacity:.2}12%{opacity:.7}30%{opacity:.55}32%{opacity:.05}34%{opacity:.7}60%{opacity:.5}62%{opacity:.1}65%{opacity:.7}100%{opacity:.6}}
+@keyframes soonJitter{0%{transform:translate(0,0)}50%{transform:translate(.5px,-.3px)}100%{transform:translate(0,0)}}
+
+/* Sections */
+.section{padding:56px 0;border-bottom:1px solid var(--border)}
+h2{margin:0 0 14px;font:700 clamp(28px,4.2vw,44px)/1 var(--font)}
+.lead{color:var(--muted);max-width:860px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{aspect-ratio:1;border-radius:14px;border:1px solid var(--border);background:#111}
+.link-list{display:grid;gap:10px}
+.link-list a{padding:10px 14px;border-radius:10px;background:#0b0f15;border:1px solid var(--border)}
+.site-footer{padding:40px 0;text-align:center;color:var(--muted)}
+</style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="#top">
-      <span class="brand-dot" aria-hidden="true"></span>
+      <span class="brand-dot"></span>
       <span>COMBAT FROGS</span>
     </a>
     <nav class="main-nav">
@@ -22,37 +115,33 @@
       <a href="#links">LINKS</a>
       <a href="#utility">UTILITY</a>
       <a href="#faq">FAQ</a>
-      <a class="btn btn-green" href="#wl">WHITELIST</a>
+      <a class="btn btn-ice" href="#wl">WHITELIST</a>
     </nav>
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section id="hero" class="hero">
-  <div class="hero-inner">
-    <!-- фон-стена -->
-    <div class="hero-bg"></div>
+  <div class="hero-bg" style="background-image:url('assets/bg-brick.png')"></div>
 
-    <!-- неоновые лампы -->
-    <div class="tube left"><span class="stick"></span></div>
-    <div class="tube right"><span class="stick"></span></div>
+  <div class="wall-glow left"></div>
+  <div class="wall-glow right"></div>
+  <div class="tube left"><div class="stick"></div></div>
+  <div class="tube right"><div class="stick"></div></div>
 
-    <!-- статичный титр -->
-    <img class="title-static" src="assets/title-static.png" alt="COMBAT FROGS: UNIT">
-
-    <!-- слово SOON -->
-    <div class="soon-wrap">
-      <img class="sign-soon" src="assets/soon.png" alt="SOON">
+  <div class="hero-inner wrap">
+    <div class="sign-wrap">
+      <img class="sign-static" src="assets/title-static.png" alt="COMBAT FROGS: UNIT">
+      <div class="soon-wrap">
+        <img class="sign-soon" src="assets/soon.png" alt="SUN">
+      </div>
     </div>
-
-    <!-- текст под титром -->
-    <p class="hero-desc">
-      2010s streetwear energy. Neon club vibe. Utility for real holders: 3D files, sketches, drops.
-    </p>
-
+    <p class="tagline hero-desc">Combat Frogs: Unit is 5,000 hand-curated NFTs steeped in 2010s streetwear culture.
+Each piece is crafted with street DNA drawn from the rap game, breakdance legacy, and cap culture.
+Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming Soon.</p>
     <div class="cta-row">
-      <a class="btn btn-pink" href="#wl">Join Allowlist</a>
-      <a class="btn btn-dark" href="https://opensea.io/collection/combat-frogs" target="_blank" rel="noopener">OpenSea (OG)</a>
+      <a class="btn btn-ice" href="#wl">Join Allowlist</a>
+      <a class="btn btn-dark" href="https://opensea.io/collection/combat-frogs" target="_blank">OpenSea (OG)</a>
     </div>
   </div>
 </section>
@@ -60,9 +149,7 @@
 <section id="about" class="section">
   <div class="wrap">
     <h2>About</h2>
-    <p class="lead">
-      A style-first NFT initiative channeling early-2010s streetwear and club glow. Clean utility drops for real holders.
-    </p>
+    <p class="lead">A style-first NFT initiative channeling early-2010s streetwear and club glow. Clean utility drops for real holders.</p>
   </div>
 </section>
 
@@ -70,8 +157,8 @@
   <div class="wrap">
     <h2>Preview</h2>
     <div class="grid">
-      <div class="card reveal"></div><div class="card reveal"></div><div class="card reveal"></div><div class="card reveal"></div>
-      <div class="card reveal"></div><div class="card reveal"></div><div class="card reveal"></div><div class="card reveal"></div>
+      <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
+      <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
     </div>
   </div>
 </section>
@@ -80,8 +167,8 @@
   <div class="wrap">
     <h2>Links & Hubs</h2>
     <ul class="link-list">
-      <li><a href="https://x.com/awaoriginal" target="_blank" rel="noopener">X (Twitter) — @awaoriginal</a></li>
-      <li><a href="https://opensea.io/collection/combat-frogs" target="_blank" rel="noopener">OpenSea (OG)</a></li>
+      <li><a href="https://x.com/awaoriginal" target="_blank">X (Twitter) — @awaoriginal</a></li>
+      <li><a href="https://opensea.io/collection/combat-frogs" target="_blank">OpenSea (OG)</a></li>
     </ul>
   </div>
 </section>
@@ -96,28 +183,19 @@
 <section id="faq" class="section">
   <div class="wrap">
     <h2>FAQ</h2>
-    <details class="faq">
-      <summary>Which chain?</summary>
-      <div class="faq-a">TBA. Follow X for updates.</div>
-    </details>
-    <details class="faq">
-      <summary>When mint?</summary>
-      <div class="faq-a">Soon™ — allowlist will be first.</div>
-    </details>
+    <details><summary>Which chain?</summary><div>TBA. Follow X for updates.</div></details>
+    <details><summary>When mint?</summary><div>Soon™ — allowlist will be first.</div></details>
   </div>
 </section>
 
 <section id="wl" class="section">
   <div class="wrap" style="text-align:center">
     <h2>Whitelist</h2>
-    <a class="btn btn-pink" href="#">Join Allowlist</a>
+    <a class="btn btn-ice" href="#">Join Allowlist</a>
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="wrap">© <span id="y"></span> Combat Frogs</div>
-</footer>
-
-<script defer src="styles/main.js"></script>
+<footer class="site-footer"><div class="wrap">© <span id="y"></span> Combat Frogs</div></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
