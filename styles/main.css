@@ -1,6 +1,6 @@
 :root{
   --bg:#0a0b10; --fg:#eaf0f6; --muted:#9fb0c2;
-  --accent:#39ff14; --pink:#ff3bd0; --pink2:#ff1592; --vio:#7a5cff; --cyan:#28e0ff;
+  --accent:#39ff14; --pink:#ff3bd0; --pink2:#ff1f54; --vio:#7a5cff; --cyan:#28e0ff;
   --border:#1b2030; --card:#0f131e; --maxw:1200px;
 }
 *{box-sizing:border-box}
@@ -18,62 +18,161 @@ img{max-width:100%;display:block}
 .main-nav a{text-transform:uppercase;font-weight:800;opacity:.92}
 .btn{display:inline-block;padding:10px 16px;border-radius:12px;font-weight:800}
 .btn-green{background:linear-gradient(180deg,var(--accent),#26cc08);color:#08140a;border:1px solid rgba(57,255,20,.5);box-shadow:0 0 20px rgba(57,255,20,.35)}
-.btn-pink{background:linear-gradient(180deg,var(--pink),var(--pink2));border:1px solid rgba(255,59,208,.5);box-shadow:0 0 18px rgba(255,59,208,.32)}
+.btn-pink{background:linear-gradient(180deg,var(--pink),#ff1592);border:1px solid rgba(255,59,208,.5);box-shadow:0 0 18px rgba(255,59,208,.32)}
 .btn-dark{background:#0e121a;color:var(--fg);border:1px solid var(--border)}
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.hero .hero-inner{position:relative; z-index:1; min-height:74vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;padding:72px 0}
-
+.hero .hero-inner{
+  position:relative; z-index:1;
+  min-height:58vh; display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;
+  padding:56px 0;
+}
+@media (max-width:800px){ .hero .hero-inner{min-height:68vh;padding:64px 0} }
 .hero-bg{
   position:absolute; inset:0; z-index:0;
   background-position:center; background-size:cover; background-repeat:no-repeat;
   filter:contrast(1.02) brightness(.9);
 }
 
-/* neon tubes */
-.tube{position:absolute;top:12%;bottom:14%;width:22px;z-index:2}
-.tube.left{left:3%} .tube.right{right:3%}
-.tube .stick{
-  position:absolute;inset:0;border-radius:14px;
-  background:linear-gradient(180deg,#2a2f3a,#141922);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05), 0 10px 28px rgba(0,0,0,.45);
+/* ===== WALL GLOW — мягкий отсвет на кирпиче ===== */
+.wall-glow{
+  position:absolute; top:8%; bottom:10%; width:34vw; max-width:520px; z-index:1;
+  pointer-events:none; mix-blend-mode:screen; opacity:.40; filter:blur(20px);
+  animation:glowPulse 5.2s ease-in-out infinite;
 }
+.wall-glow.left{
+  left:-8vw;
+  background:
+    radial-gradient(50% 60% at 60% 50%,
+      rgba(255,59,208,.55) 0%,
+      rgba(255,31,84,.34) 36%,
+      rgba(122,92,255,.22) 58%,
+      rgba(0,0,0,0) 78%);
+  animation-duration:4.9s;
+}
+.wall-glow.right{
+  right:-8vw;
+  background:
+    radial-gradient(50% 60% at 40% 50%,
+      rgba(40,224,255,.52) 0%,
+      rgba(122,92,255,.30) 44%,
+      rgba(0,0,0,0) 72%);
+  animation-duration:5.8s; animation-delay:.6s;
+}
+@keyframes glowPulse { 0%{opacity:.34} 50%{opacity:.78} 100%{opacity:.34} }
+
+/* ===== NEON TUBES — без контура (только свет) + “перебои” ===== */
+.tube{position:absolute;top:12%;bottom:14%;width:16px;z-index:2}
+.tube.left{left:6%} .tube.right{right:6%}
+
+/* обводку убрали: корпус прозрачный */
+.tube .stick{position:absolute;inset:0;border-radius:12px;background:transparent}
+
+/* световой стержень внутри */
 .tube .stick::before{
-  content:"";position:absolute;left:5px;right:5px;top:5px;bottom:5px;border-radius:10px;background:#fff;
-  background:linear-gradient(180deg,#ff49db 0%,#7a5cff 100%);
-  animation:tubeSoft 3.6s infinite ease-in-out;
-}
-.tube.right .stick::before{ background:linear-gradient(180deg,#28e0ff 0%,#7a5cff 100%); }
-@keyframes tubeSoft{ 0%{opacity:.78} 50%{opacity:1} 100%{opacity:.78} }
+  content:""; position:absolute; left:2px; right:2px; top:2px; bottom:2px; border-radius:10px;
+  /* белая “горячая” сердцевина + цвет рамкой */
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.97), rgba(255,255,255,.97)) padding-box,
+    linear-gradient(180deg, var(--pink), var(--pink2)) border-box;
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0) border-box;
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  border:2px solid transparent;
 
-/* Sign w/o backplate */
-.sign-wrap{ position:relative; width:min(560px,72vw); margin:0 auto 8px; z-index:3; }
-.neon-sign{
-  display:block; width:100%; height:auto; object-fit:contain;
-  /* только свечение вокруг надписи, без рамок */
+  /* рваная маска, чтобы где-то “пропадало” свечение */
+  mask-image: linear-gradient(180deg,
+      rgba(0,0,0,.9) 0%, rgba(0,0,0,1) 8%, rgba(0,0,0,.6) 13%,
+      rgba(0,0,0,1) 21%, rgba(0,0,0,.55) 29%, rgba(0,0,0,1) 41%,
+      rgba(0,0,0,.6) 57%, rgba(0,0,0,1) 73%, rgba(0,0,0,.75) 100%);
+  animation:tubeCoreL 3.1s infinite steps(30,end);
+}
+.tube.right .stick::before{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.97), rgba(255,255,255,.97)) padding-box,
+    linear-gradient(180deg, var(--cyan), var(--vio)) border-box;
+  animation-name:tubeCoreR; animation-duration:3.7s;
+}
+
+/* мягкое внешнее свечение — как на стене */
+.tube .stick::after{
+  content:""; position:absolute; left:-22px; right:-22px; top:-22px; bottom:-22px; border-radius:18px;
+  filter:blur(18px); opacity:.85; pointer-events:none; mix-blend-mode:screen;
+  background:linear-gradient(180deg, rgba(255,59,208,.6), rgba(255,31,84,.38));
+  animation:tubeHaloL 4.7s infinite steps(50,end);
+}
+.tube.right .stick::after{
+  background:linear-gradient(180deg, rgba(40,224,255,.6), rgba(122,92,255,.36));
+  animation-name:tubeHaloR; animation-duration:5.1s; animation-delay:.3s;
+}
+
+/* “перебои” — местами полная темнота на мгновение */
+@keyframes tubeCoreL{
+  0%{opacity:.7} 7%{opacity:1} 12%{opacity:.35} 14%{opacity:1}
+  29%{opacity:.9} 30%{opacity:0} 34%{opacity:1}
+  53%{opacity:.85} 59%{opacity:0} 61%{opacity:1}
+  79%{opacity:.8} 100%{opacity:.72}
+}
+@keyframes tubeCoreR{
+  0%{opacity:.68} 9%{opacity:1} 16%{opacity:.4} 18%{opacity:1}
+  42%{opacity:.88} 46%{opacity:0} 49%{opacity:1}
+  70%{opacity:.82} 76%{opacity:0} 79%{opacity:1}
+  100%{opacity:.7}
+}
+@keyframes tubeHaloL{
+  0%{opacity:.55} 24%{opacity:.96} 30%{opacity:.5}
+  48%{opacity:.92} 56%{opacity:.46}
+  74%{opacity:.95} 82%{opacity:.5} 100%{opacity:.55}
+}
+@keyframes tubeHaloR{
+  0%{opacity:.5} 22%{opacity:.96} 28%{opacity:.48}
+  47%{opacity:.92} 54%{opacity:.45}
+  76%{opacity:.94} 84%{opacity:.48} 100%{opacity:.5}
+}
+
+/* ===== НЕОНОВАЯ НАДПИСЬ ===== */
+/* Обёртка */
+.sign-wrap{ position:relative; width:min(520px,64vw); margin:0 auto 6px; z-index:3; }
+
+/* Статичный слой (COMBAT FROGS: UNIT) */
+.sign-static{
+  width:100%; height:auto; object-fit:contain;
   filter:
-    drop-shadow(0 0 1px rgba(0,0,0,.6))
-    drop-shadow(0 0 10px rgba(40,224,255,.35))
-    drop-shadow(0 0 18px rgba(255,59,208,.22));
-  animation:neonFlick 3.8s infinite steps(80,end);
-}
-@keyframes neonFlick{
-  0%{opacity:.96} 6%{opacity:.54} 10%{opacity:1}
-  42%{opacity:.9} 48%{opacity:.52} 52%{opacity:1}
-  78%{opacity:.9} 84%{opacity:.5} 88%{opacity:1} 100%{opacity:.96}
+    drop-shadow(0 0 2px rgba(0,0,0,.45))
+    drop-shadow(0 0 12px rgba(40,224,255,.38))
+    drop-shadow(0 0 24px rgba(122,92,255,.2));
 }
 
+/* Мерцающий слой (SOON) */
+.sign-soon{
+  position:absolute; inset:0; width:100%; height:auto; object-fit:contain; pointer-events:none;
+  filter:
+    drop-shadow(0 0 2px rgba(0,0,0,.5))
+    drop-shadow(0 0 16px rgba(255,59,208,.55))
+    drop-shadow(0 0 26px rgba(122,92,255,.35));
+  animation:soonFlick 4.2s infinite steps(70,end);
+}
+@keyframes soonFlick{
+  0%{opacity:.95}
+  7%{opacity:.42} 9%{opacity:1}
+  26%{opacity:.92}
+  31%{opacity:0} 36%{opacity:1}
+  58%{opacity:.88}
+  64%{opacity:.35} 70%{opacity:1}
+  86%{opacity:.9}
+  92%{opacity:.38} 95%{opacity:1}
+  100%{opacity:.95}
+}
+
+/* Остальные секции */
 .tagline{max-width:860px;text-align:center;color:var(--muted)}
 .cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 
-/* Marquee */
 .marquee{overflow:hidden;width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
 .marquee-track{display:flex;gap:40px;white-space:nowrap;animation:marquee 22s linear infinite}
 .marquee span{padding:10px 0;font-weight:800;letter-spacing:.12em;opacity:.9}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* Sections */
 .section{padding:56px 0;border-bottom:1px solid var(--border)}
 h2{margin:0 0 14px;font-size:clamp(28px,4.2vw,44px);font-weight:800}
 .lead{color:var(--muted);max-width:860px}
