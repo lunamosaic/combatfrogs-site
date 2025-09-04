@@ -255,52 +255,80 @@ h2{margin:0 0 14px;font-size:clamp(28px,4.2vw,44px);font-weight:800}
   .btn { padding: 10px 14px; font-size: 14px; }
   .cta-row { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
 }
-/* ===== Neon Form Style ===== */
+/* ===== Neon allowlist form ===== */
+#wl-form { padding-top: 24px; }
+
 .neon-form {
-  max-width: 400px;
-  margin: 40px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  max-width: 860px;
+  margin: 16px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: start;
 }
+
+.neon-form .full { grid-column: 1 / -1; }
 
 .neon-form input,
 .neon-form textarea {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid #02bdf0;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid #02bdf0;           /* твой голубой */
   color: #fff;
-  font-family: 'Anton', sans-serif;
+  font-family: 'Anton', system-ui, sans-serif;
   font-size: 1rem;
-  padding: 12px 15px;
-  border-radius: 6px;
+  padding: 12px 14px;
+  border-radius: 8px;
   outline: none;
-  transition: box-shadow 0.3s ease, border 0.3s ease;
+  transition: box-shadow .25s ease, border-color .25s ease, background .25s ease;
 }
+
+.neon-form input::placeholder,
+.neon-form textarea::placeholder { color: rgba(255,255,255,.65); }
 
 .neon-form input:focus,
 .neon-form textarea:focus {
-  border-color: #ff3bcb;
-  box-shadow: 0 0 10px #02bdf0, 0 0 20px #ff3bcb;
+  border-color: #ff3bcb;               /* розовый */
+  box-shadow: 0 0 10px #02bdf0, 0 0 18px #ff3bcb;
+  background: rgba(0,0,0,0.45);
 }
 
-.neon-form textarea {
-  resize: none;
-  min-height: 80px;
-}
+.neon-form textarea { min-height: 90px; resize: vertical; }
 
 .neon-form button {
-  background: linear-gradient(90deg, #02bdf0, #ff3bcb);
+  justify-self: center;
+  min-width: 220px;
+  background: linear-gradient(90deg, #02bdf0 0%, #ff3bcb 100%);
   border: none;
   color: #fff;
-  font-family: 'Anton', sans-serif;
-  font-size: 1.2rem;
-  padding: 12px;
-  border-radius: 8px;
+  font-family: 'Anton', system-ui, sans-serif;
+  font-size: 1.15rem;
+  padding: 12px 22px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: transform .15s ease, box-shadow .25s ease, filter .25s ease;
+  box-shadow: 0 0 10px rgba(2,189,240,.5), 0 0 16px rgba(255,59,203,.45);
 }
 
 .neon-form button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #02bdf0, 0 0 25px #ff3bcb;
+  transform: translateY(-1px);
+  box-shadow: 0 0 14px rgba(2,189,240,.8), 0 0 22px rgba(255,59,203,.8);
+}
+
+.form-msg {
+  margin: 0;
+  text-align: center;
+  font-family: 'Anton', system-ui, sans-serif;
+  letter-spacing: .02em;
+  color: #cfefff;
+  opacity: .9;
+}
+.form-msg[data-state="ok"]     { color: #9fffcf; text-shadow: 0 0 8px rgba(159,255,207,.6); }
+.form-msg[data-state="err"]    { color: #ffb4d9; text-shadow: 0 0 8px rgba(255,59,203,.55); }
+.form-msg[data-state="pending"]{ color: #bfe8ff; }
+
+/* Адаптив: одна колонка на мобиле */
+@media (max-width: 780px) {
+  .neon-form { grid-template-columns: 1fr; gap: 12px; }
 }
