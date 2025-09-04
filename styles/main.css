@@ -1,117 +1,171 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Combat Frogs — Unit Era. Art First.</title>
-  <meta name="description" content="2010s streetwear energy. Neon club vibe. Utility for real holders: 3D files, sketches, drops." />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles/main.css">
-</head>
-<body>
+:root{
+  --bg:#0a0b10; --fg:#eaf0f6; --muted:#9fb0c2;
+  --accent:#39ff14; --pink:#ff3bd0; --pink2:#ff1592; --vio:#7a5cff; --cyan:#28e0ff;
+  --border:#1b2030; --card:#0f131e; --maxw:1200px;
+}
 
-<!-- ===== HEADER ===== -->
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">
-      <span class="brand-dot" aria-hidden="true"></span>
-      <span>COMBAT FROGS</span>
-    </a>
-    <nav class="main-nav">
-      <a href="#about">ABOUT</a>
-      <a href="#preview">PREVIEW</a>
-      <a href="#links">LINKS</a>
-      <a href="#utility">UTILITY</a>
-      <a href="#roadmap">ROADMAP</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn btn-green" href="#wl">WHITELIST</a>
-    </nav>
-  </div>
-</header>
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 
-<!-- ===== HERO ===== -->
-<section class="hero" id="top">
-  <!-- лампы по бокам, фон-кирпич уже задан у тебя — не трогаем -->
-  <div class="tube left" aria-hidden="true"><div class="stick"></div></div>
-  <div class="tube right" aria-hidden="true"><div class="stick"></div></div>
+/* ===== HEADER ===== */
+.site-header{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,rgba(10,11,16,.9),rgba(10,11,16,.6));backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.8px}
+.brand-dot{width:16px;height:16px;border-radius:50%;background:#39ff14;box-shadow:0 0 12px #39ff14,0 0 28px #39ff14}
+.main-nav{display:flex;gap:18px;align-items:center}
+.main-nav a{text-transform:uppercase;font-weight:800;opacity:.92}
+.btn{display:inline-block;padding:10px 16px;border-radius:12px;font-weight:800}
+.btn-green{background:linear-gradient(180deg,var(--accent),#26cc08);color:#08140a;border:1px solid rgba(57,255,20,.5);box-shadow:0 0 20px rgba(57,255,20,.35)}
+.btn-pink{background:linear-gradient(180deg,var(--pink),var(--pink2));border:1px solid rgba(255,59,208,.5);box-shadow:0 0 22px rgba(255,59,208,.4)}
+.btn-dark{background:#0e121a;color:var(--fg);border:1px solid var(--border)}
 
-  <div class="wrap hero-inner">
+/* ===== HERO ===== */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero .hero-inner{min-height:78vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;padding:84px 0}
 
-    <!-- Блок вывески: подложка + три независимые SVG -->
-    <div class="hero-sign">
-      <div class="sign-backplate" aria-hidden="true"></div>
+/* ==== Более естественные лампы ==== */
+.tube{position:absolute;top:9%;bottom:12%;width:30px;z-index:2}
+.tube.left{left:3%} .tube.right{right:3%}
 
-      <div class="neon-stack" role="img" aria-label="Combat Frogs — Unit — Soon">
-        <img id="svg-combat" class="neon-word word-combat cyan"
-             data-candidates="assets/CombatFrogs.svg,assets/combatfrogs.svg,assets/combat-frogs.svg,assets/COMBATFROGS.svg"
-             alt="Combat Frogs">
-        <img id="svg-unit" class="neon-word word-unit pink"
-             data-candidates="assets/Unit.svg,assets/unit.svg,assets/UNIT.svg"
-             alt="Unit">
-        <img id="svg-soon" class="neon-word word-soon pink"
-             data-candidates="assets/Soon.svg,assets/soon.svg,assets/SOON.svg"
-             alt="Soon">
-      </div>
-    </div>
+/* корпус трубы */
+.tube .stick{
+  position:absolute;inset:0;border-radius:18px;
+  background:linear-gradient(180deg,#2c2c33 0%, #1a1a23 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 38px rgba(0,0,0,.55);
+}
+/* светящаяся колба внутри */
+.tube .stick::before{
+  content:"";position:absolute;left:7px;right:7px;top:7px;bottom:7px;border-radius:13px;background:#fff;
+}
+.tube.left .stick::before{
+  background:linear-gradient(180deg,#ff49db 0%,#7a5cff 100%);
+  box-shadow:
+    0 0 16px rgba(255,59,208,.85),
+    0 0 42px rgba(122,92,255,.65),
+    0 0 110px rgba(255,59,208,.45);
+  animation: tubePulseL 3s infinite steps(100,end);
+}
+.tube.right .stick::before{
+  background:linear-gradient(180deg,#28e0ff 0%,#7a5cff 100%);
+  box-shadow:
+    0 0 16px rgba(40,224,255,.85),
+    0 0 42px rgba(122,92,255,.65),
+    0 0 110px rgba(40,224,255,.45);
+  animation: tubePulseR 3.5s infinite steps(100,end);
+}
 
-    <p class="tagline">2010s streetwear energy. Neon club vibe. Utility for real holders: 3D files, sketches, drops.</p>
+/* торцевые заглушки + кронштейны */
+.tube::before, .tube::after{
+  content:""; position:absolute; left:50%; transform:translateX(-50%); width:44px; height:12px;
+  background:linear-gradient(180deg,#0c0f15,#1a1e27);
+  border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,.6);
+}
+.tube::before{ top:-10px }  /* верхний кронштейн */
+.tube::after { bottom:-10px }/* нижний кронштейн */
 
-    <div class="cta-row">
-      <a class="btn btn-pink" href="#wl">Join Allowlist</a>
-      <a class="btn btn-dark" href="https://opensea.io/collection/combat-frogs" target="_blank" rel="noopener">OpenSea (OG)</a>
-    </div>
+/* мягкая тень от лампы на стене (реализм) */
+.tube .wall-shadow{
+  content:""; position:absolute; inset:-40px -140px; pointer-events:none; z-index:-1; border-radius:100px;
+  box-shadow: 0 40px 60px rgba(0,0,0,.25);
+}
 
-    <div class="stats">
-      <div class="stat"><div class="v">Supply: <b>TBA</b></div><div class="k">New drop</div></div>
-      <div class="stat"><div class="v">Chain: <b>TBA</b></div><div class="k">Announced soon</div></div>
-      <div class="stat"><div class="v">Contract: <a href="https://opensea.io/collection/combat-frogs" target="_blank" rel="noopener">OG on OpenSea</a></div><div class="k">reference only</div></div>
-      <div class="stat"><div class="v">Follow: <a href="https://x.com/awaoriginal" target="_blank" rel="noopener">@awaoriginal</a></div><div class="k">X (Twitter)</div></div>
-    </div>
-  </div>
-</section>
+/* разлитие света по стене — чуть спокойнее */
+.tube .glow{
+  content:""; position:absolute; inset:-120px -220px; border-radius:100px; mix-blend-mode:screen; filter:blur(36px); opacity:.85; pointer-events:none;
+}
+.tube.left .glow{ background:
+  radial-gradient(50% 50% at 40% 50%, rgba(255,59,208,.52), transparent 70%),
+  radial-gradient(60% 60% at 50% 50%, rgba(122,92,255,.3), transparent 75%);
+  animation: wallWashL 3.2s infinite steps(80,end);
+}
+.tube.right .glow{ background:
+  radial-gradient(50% 50% at 60% 50%, rgba(40,224,255,.52), transparent 70%),
+  radial-gradient(60% 60% at 50% 50%, rgba(122,92,255,.3), transparent 75%);
+  animation: wallWashR 3.7s infinite steps(90,end);
+}
 
-<!-- Остальные секции без смысловой правки -->
-<section id="about" class="section"><div class="wrap"><h2>About</h2><p>Style-first NFT project with 2010s streetwear DNA. Honest drops.</p></div></section>
+@keyframes tubePulseL{ 0%{opacity:.85} 8%{opacity:1} 15%{opacity:.9} 32%{opacity:1} 60%{opacity:.92} 100%{opacity:.88} }
+@keyframes tubePulseR{ 0%{opacity:.82} 10%{opacity:1} 20%{opacity:.9} 44%{opacity:1} 70%{opacity:.9} 100%{opacity:.86} }
+@keyframes wallWashL{ 0%{opacity:.28} 12%{opacity:.9} 26%{opacity:.5} 48%{opacity:1} 76%{opacity:.65} 100%{opacity:.8} }
+@keyframes wallWashR{ 0%{opacity:.24} 14%{opacity:.88} 30%{opacity:.48} 52%{opacity:1} 80%{opacity:.64} 100%{opacity:.78} }
 
-<section id="preview" class="section">
-  <div class="wrap">
-    <h2>Preview</h2>
-    <div class="gallery">
-      <img src="gallery/1.webp" alt="">
-      <img src="gallery/2.webp" alt="">
-      <img src="gallery/3.webp" alt="">
-      <img src="gallery/4.webp" alt="">
-      <img src="gallery/5.webp" alt="">
-      <img src="gallery/6.webp" alt="">
-      <img src="gallery/7.webp" alt="">
-      <img src="gallery/8.webp" alt="">
-    </div>
-  </div>
-</section>
+/* ===== ВЫВЕСКА: подложка + три SVG ===== */
+.hero-sign{
+  position:relative; width:min(560px,70vw);  /* ~в 2–3 раза меньше от прежних 1000px */
+  margin:0 auto 8px; z-index:3;
+}
 
-<section id="links" class="section">
-  <div class="wrap">
-    <h2>Links & Hubs</h2>
-    <ul class="link-list">
-      <li><a href="https://x.com/awaoriginal" target="_blank" rel="noopener">X (Twitter) — @awaoriginal</a></li>
-      <li><a href="https://opensea.io/collection/combat-frogs" target="_blank" rel="noopener">OpenSea (OG)</a></li>
-    </ul>
-  </div>
-</section>
+/* подложка под надпись (скошенное стекло/пластик), снижает общую яркость */
+.sign-backplate{
+  position:absolute; inset:-18px -26px; border-radius:18px;
+  background:linear-gradient(180deg, rgba(8,10,14,.55), rgba(8,10,14,.35));
+  border:1px solid rgba(160,178,210,.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 8px 24px rgba(0,0,0,.35),
+    0 0 120px rgba(40,224,255,.08),
+    0 0 120px rgba(255,59,208,.08);
+  backdrop-filter: blur(2px);
+}
 
-<section id="utility" class="section"><div class="wrap"><h2>Utility</h2><p>3D models, sketches, early collabs. Token-gate later.</p></div></section>
-<section id="roadmap" class="section"><div class="wrap"><h2>Roadmap</h2><p>Phase 1: site + WL → Phase 2: utility → Phase 3: mint.</p></div></section>
-<section id="faq" class="section"><div class="wrap"><h2>FAQ</h2><p>Chain: TBA. Follow X.</p></div></section>
+/* три независимых слова — svg как img */
+.neon-stack{position:relative}
+.neon-word{
+  width:100%; height:auto; display:block; opacity:1; image-rendering:auto;
+  /* псевдо-контур: тонкий тёмный «ореол» + неон-глоу сверху */
+  filter:
+    drop-shadow(0 0 1px rgba(0,0,0,.7))
+    drop-shadow(0 0 2px rgba(0,0,0,.6))
+    drop-shadow(0 0 10px rgba(168,241,255,.9))
+    drop-shadow(0 0 26px rgba(40,224,255,1))
+    drop-shadow(0 0 60px rgba(122,92,255,.45));
+  will-change: opacity, filter;
+}
+.neon-word.pink{
+  filter:
+    drop-shadow(0 0 1px rgba(0,0,0,.7))
+    drop-shadow(0 0 2px rgba(0,0,0,.6))
+    drop-shadow(0 0 10px rgba(255,212,245,.95))
+    drop-shadow(0 0 26px rgba(255,59,208,1))
+    drop-shadow(0 0 60px rgba(122,92,255,.45));
+}
 
-<section id="wl" class="section">
-  <div class="wrap" style="text-align:center">
-    <h2>Whitelist</h2>
-    <a class="btn btn-pink" href="#">Join Allowlist</a>
-  </div>
-</section>
+/* немного несинхронного мерцания (спокойнее, чем раньше) */
+.word-combat{animation:flickBlue 3.0s infinite steps(90,end) -0.2s}
+.word-unit  {animation:flickPink  2.2s infinite steps(80,end) -0.3s}
+.word-soon  {animation:flickPink  4.2s infinite steps(100,end) -0.1s}
 
-<footer class="site-footer"><div class="wrap">© <span id="y"></span> Combat Frogs</div></footer>
+@keyframes flickBlue{
+  0%{opacity:1} 8%{opacity:.9} 12%{opacity:.5} 14%{opacity:1}
+  28%{opacity:.92} 34%{opacity:.58} 36%{opacity:1}
+  62%{opacity:.9} 68%{opacity:.56} 70%{opacity:1}
+  86%{opacity:.88} 92%{opacity:.52} 100%{opacity:.96}
+}
+@keyframes flickPink{
+  0%{opacity:.96} 7%{opacity:.52} 10%{opacity:1}
+  26%{opacity:.9} 32%{opacity:.5} 34%{opacity:1}
+  58%{opacity:.88} 64%{opacity:.48} 66%{opacity:1}
+  84%{opacity:.86} 90%{opacity:.46} 100%{opacity:.95}
+}
 
-<script src="styles/main.js"></script>
-</body>
-</html>
+/* ===== Остальной каркас ===== */
+.tagline{color:var(--muted);max-width:860px;text-align:center}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;max-width:920px}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:14px;border:1px solid var(--border);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01))}
+.stat .v{font-weight:800;font-size:18px}.stat .k{font-size:12px;color:var(--muted)}
+
+.section{padding:56px 0;border-bottom:1px solid var(--border)}
+h2{margin:0 0 14px;font-size:clamp(28px,4.2vw,44px);font-weight:800}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.gallery img{width:100%;border-radius:14px;border:1px solid var(--border);background:#0f121a}
+
+.link-list{display:grid;gap:10px}
+.link-list a{padding:10px 14px;border-radius:10px;background:#0b0f15;border:1px solid var(--border)}
+
+.site-footer{padding:40px 0;text-align:center;color:var(--muted)}
