@@ -28,31 +28,21 @@
   </div>
 </header>
 
+<!-- ===== HERO (оптимизирован) ===== -->
 <section class="hero" id="top">
-  <!-- Лампы -->
-  <div class="tube left" aria-hidden="true">
-    <div class="stick"></div><div class="glow"></div>
-  </div>
-  <div class="tube right" aria-hidden="true">
-    <div class="stick"></div><div class="glow"></div>
-  </div>
+  <!-- фон кирпича — ставится через JS на #heroBg -->
+  <div id="heroBg" aria-hidden="true"></div>
+
+  <!-- Неоновые трубки (облегчённые) -->
+  <div class="tube left" aria-hidden="true"><div class="stick"></div></div>
+  <div class="tube right" aria-hidden="true"><div class="stick"></div></div>
 
   <div class="wrap hero-inner">
-    <!-- Вывеска: подложка + три независимые SVG -->
-    <div class="hero-sign">
+    <!-- ОДНА картинка-надпись (SVG или PNG) -->
+    <div class="sign-wrap">
       <div class="sign-backplate" aria-hidden="true"></div>
-
-      <div class="neon-stack" role="img" aria-label="Combat Frogs — Unit — Soon">
-        <img id="svg-combat" class="neon-word word-combat cyan"
-             data-candidates="assets/CombatFrogs.svg,assets/combatfrogs.svg,assets/combat-frogs.svg,assets/COMBATFROGS.svg"
-             alt="Combat Frogs">
-        <img id="svg-unit" class="neon-word word-unit pink"
-             data-candidates="assets/Unit.svg,assets/unit.svg,assets/UNIT.svg"
-             alt="Unit">
-        <img id="svg-soon" class="neon-word word-soon pink"
-             data-candidates="assets/Soon.svg,assets/soon.svg,assets/SOON.svg"
-             alt="Soon">
-      </div>
+      <img id="neon-sign" class="neon-sign" alt="Combat Frogs — Unit — Soon"
+           data-candidates="assets/CombatFrogs.svg,assets/CombatFrox.svg,assets/CombatFrogs.png,assets/NeonDeficeTitle.png,assets/neon-title.png">
     </div>
 
     <p class="tagline">2010s streetwear energy. Neon club vibe. Utility for real holders: 3D files, sketches, drops.</p>
