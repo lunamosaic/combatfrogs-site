@@ -183,3 +183,50 @@ h2{margin:0 0 14px;font-size:clamp(28px,4.2vw,44px);font-weight:800}
 .link-list a{padding:10px 14px;border-radius:10px;background:#0b0f15;border:1px solid var(--border)}
 
 .site-footer{padding:40px 0;text-align:center;color:var(--muted)}
+
+/* ==== MOBILE LAYOUT (<= 768px) ==== */
+@media (max-width: 768px) {
+  .header-inner { padding: 14px 0; }
+  .brand { font-size: 22px; }
+  .main-nav { gap: 12px; }
+  .main-nav a { font-size: 13px; }
+
+  /* Hero компактнее и без «наезда» */
+  .hero .hero-inner {
+    min-height: 62vh;      /* повыше, чтобы всё влезло по вертикали */
+    padding: 28px 0 24px;
+    gap: 12px;
+  }
+  .sign-wrap {
+    width: min(86vw, 440px);    /* уменьшаем логотип/надпись */
+    margin-bottom: 6px;
+  }
+  .sign-static { filter: none; }   /* текст «COMBAT FROGS: UNIT» — без доп. блюра на мобилке */
+
+  /* SUN + аура — чуть деликатнее, чтобы не «переливало» экран */
+  .sign-soon {
+    filter: drop-shadow(0 0 10px rgba(255,59,208,.55)) drop-shadow(0 0 18px rgba(255,59,208,.35));
+    animation-duration: 3.9s; /* на мобилке чуть другой темп, но синхронно с аурой */
+  }
+  .soon-wrap::after {
+    filter: blur(12px);
+    opacity: .55;
+    animation-duration: 3.9s;
+  }
+
+  /* Неон-трубки — тоньше/короче и ближе к центру */
+  .tube { width: 10px; top: 14%; bottom: 18%; }
+  .tube.left { left: 4%; }
+  .tube.right { right: 4%; }
+  .tube .stick::after { inset: -16px; filter: blur(14px); opacity: .6; }
+
+  /* Подсветка стены — меньше площадь, чтобы не «заливать» весь экран */
+  .wall-glow { width: 50vw; max-width: 340px; opacity: .38; filter: blur(14px); }
+  .wall-glow.left { left: -14vw; }
+  .wall-glow.right { right: -14vw; }
+
+  /* Текст под героем и кнопки */
+  .tagline { font-size: 14px; line-height: 1.35; text-align: center; padding: 0 10px; }
+  .btn { padding: 10px 14px; font-size: 14px; }
+  .cta-row { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+}
