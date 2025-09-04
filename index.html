@@ -18,31 +18,30 @@
     </a>
     <nav class="main-nav">
       <a href="#about">ABOUT</a>
-      <a href="#preview">PREVIEW</a>
+      <a href="#showcase">PREVIEW</a>
       <a href="#links">LINKS</a>
       <a href="#utility">UTILITY</a>
-      <a href="#roadmap">ROADMAP</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-green" href="#wl">WHITELIST</a>
     </nav>
   </div>
 </header>
 
-<!-- ===== HERO (оптимизирован) ===== -->
+<!-- ===== HERO (no backplate) ===== -->
 <section class="hero" id="top">
-  <!-- фон кирпича — ставится через JS на #heroBg -->
-  <div id="heroBg" aria-hidden="true"></div>
+  <!-- Brick background -->
+  <div class="hero-bg" style="background-image:
+    linear-gradient(0deg, rgba(0,0,0,.42), rgba(0,0,0,.42)),
+    url('assets/brick-wall.png');" aria-hidden="true"></div>
 
-  <!-- Неоновые трубки (облегчённые) -->
+  <!-- neon tubes -->
   <div class="tube left" aria-hidden="true"><div class="stick"></div></div>
   <div class="tube right" aria-hidden="true"><div class="stick"></div></div>
 
   <div class="wrap hero-inner">
-    <!-- ОДНА картинка-надпись (SVG или PNG) -->
     <div class="sign-wrap">
-      <div class="sign-backplate" aria-hidden="true"></div>
-      <img id="neon-sign" class="neon-sign" alt="Combat Frogs — Unit — Soon"
-           data-candidates="assets/CombatFrogs.svg,assets/CombatFrox.svg,assets/CombatFrogs.png,assets/NeonDeficeTitle.png,assets/neon-title.png">
+      <!-- только картинка-надпись, без подложек -->
+      <img class="neon-sign" src="assets/neon-sign.svg" alt="Combat Frogs — Unit — Soon" loading="eager" decoding="async">
     </div>
 
     <p class="tagline">2010s streetwear energy. Neon club vibe. Utility for real holders: 3D files, sketches, drops.</p>
@@ -52,23 +51,32 @@
       <a class="btn btn-dark" href="https://opensea.io/collection/combat-frogs" target="_blank" rel="noopener">OpenSea (OG)</a>
     </div>
 
-    <div class="stats">
-      <div class="stat"><div class="v">Supply: <b>TBA</b></div><div class="k">New drop</div></div>
-      <div class="stat"><div class="v">Chain: <b>TBA</b></div><div class="k">Announced soon</div></div>
-      <div class="stat"><div class="v">Contract: <a href="https://opensea.io/collection/combat-frogs" target="_blank" rel="noopener">OG on OpenSea</a></div><div class="k">reference only</div></div>
-      <div class="stat"><div class="v">Follow: <a href="https://x.com/awaoriginal" target="_blank" rel="noopener">@awaoriginal</a></div><div class="k">X (Twitter)</div></div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>COMBAT FROGS • UNIT • ART FIRST •</span>
+        <span>COMBAT FROGS • UNIT • ART FIRST •</span>
+        <span>COMBAT FROGS • UNIT • ART FIRST •</span>
+        <span>COMBAT FROGS • UNIT • ART FIRST •</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="about" class="section"><div class="wrap"><h2>About</h2><p>Style-first NFT project with 2010s streetwear DNA. Honest drops.</p></div></section>
+<section id="about" class="section">
+  <div class="wrap">
+    <h2>About</h2>
+    <p class="lead">
+      A style-first NFT initiative channeling early-2010s streetwear and club glow. Clean utility drops for real holders.
+    </p>
+  </div>
+</section>
 
-<section id="preview" class="section">
+<section id="showcase" class="section">
   <div class="wrap">
     <h2>Preview</h2>
-    <div class="gallery">
-      <div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div>
-      <div class="ph"></div><div class="ph"></div><div class="ph"></div><div class="ph"></div>
+    <div class="grid">
+      <div class="card reveal"></div><div class="card reveal"></div><div class="card reveal"></div><div class="card reveal"></div>
+      <div class="card reveal"></div><div class="card reveal"></div><div class="card reveal"></div><div class="card reveal"></div>
     </div>
   </div>
 </section>
@@ -83,9 +91,26 @@
   </div>
 </section>
 
-<section id="utility" class="section"><div class="wrap"><h2>Utility</h2><p>3D models, sketches, early collabs. Token-gate later.</p></div></section>
-<section id="roadmap" class="section"><div class="wrap"><h2>Roadmap</h2><p>Phase 1: site + WL → Phase 2: utility → Phase 3: mint.</p></div></section>
-<section id="faq" class="section"><div class="wrap"><h2>FAQ</h2><p>Chain: TBA. Follow X.</p></div></section>
+<section id="utility" class="section">
+  <div class="wrap">
+    <h2>Utility</h2>
+    <p>3D models, sketches, early collabs. Token-gate later.</p>
+  </div>
+</section>
+
+<section id="faq" class="section">
+  <div class="wrap">
+    <h2>FAQ</h2>
+    <details class="faq">
+      <summary>Which chain?</summary>
+      <div class="faq-a">TBA. Follow X for updates.</div>
+    </details>
+    <details class="faq">
+      <summary>When mint?</summary>
+      <div class="faq-a">Soon™ — allowlist will be first.</div>
+    </details>
+  </div>
+</section>
 
 <section id="wl" class="section">
   <div class="wrap" style="text-align:center">
@@ -94,8 +119,10 @@
   </div>
 </section>
 
-<footer class="site-footer"><div class="wrap">© <span id="y"></span> Combat Frogs</div></footer>
+<footer class="site-footer">
+  <div class="wrap">© <span id="y"></span> Combat Frogs</div>
+</footer>
 
-<script src="styles/main.js"></script>
+<script defer src="styles/main.js"></script>
 </body>
 </html>
