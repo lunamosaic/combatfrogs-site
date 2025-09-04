@@ -165,7 +165,13 @@ img{max-width:100%;display:block}
 }
 
 /* Остальные секции */
-.tagline{max-width:860px;text-align:center;color:var(--muted)}
+.hero-desc {
+  max-width: 800px;       /* ограничение ширины текста */
+  margin: 0 auto;         /* выравнивание по центру */
+  text-align: center;     /* центрирование текста */
+  line-height: 1.5;       /* читаемость */
+  font-size: 1.2rem;      /* размер можно варьировать */
+}
 .cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 
 .marquee{overflow:hidden;width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
