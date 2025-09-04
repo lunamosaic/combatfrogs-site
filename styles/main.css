@@ -1,16 +1,16 @@
+/* Base */
 :root{
   --bg:#0a0b10; --fg:#eaf0f6; --muted:#9fb0c2;
   --accent:#39ff14; --pink:#ff3bd0; --pink2:#ff1592; --vio:#7a5cff; --cyan:#28e0ff;
   --border:#1b2030; --card:#0f131e; --maxw:1200px;
 }
-
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 
-/* ===== HEADER ===== */
+/* Header */
 .site-header{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,rgba(10,11,16,.9),rgba(10,11,16,.6));backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.8px}
@@ -22,100 +22,82 @@ img{max-width:100%;display:block}
 .btn-pink{background:linear-gradient(180deg,var(--pink),var(--pink2));border:1px solid rgba(255,59,208,.5);box-shadow:0 0 22px rgba(255,59,208,.4)}
 .btn-dark{background:#0e121a;color:var(--fg);border:1px solid var(--border)}
 
-/* ===== HERO ===== */
+/* Hero */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.hero .hero-inner{min-height:78vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;padding:84px 0}
 
-/* ==== Более естественные лампы ==== */
+/* Кирпичная стена (чистым кодом) */
+.hero::before{
+  content:""; position:absolute; inset:0; z-index:0;
+  background:
+    linear-gradient(0deg, rgba(0,0,0,.38), rgba(0,0,0,.38)),
+    url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' width='120' height='60'>\
+<rect width='120' height='60' fill='%230e1118'/>\
+<g fill='none' stroke='%231b2030' stroke-width='8' stroke-linecap='square'>\
+<path d='M0 4 H120 M0 34 H120'/>\
+<path d='M4 19 H56 M64 19 H120'/>\
+<path d='M0 49 H56 M64 49 H120'/>\
+</g></svg>");
+  background-size:cover,1200px 600px;
+  background-repeat:no-repeat,repeat;
+  background-position:center,center;
+}
+.hero .hero-inner{position:relative; z-index:1; min-height:78vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;padding:84px 0}
+
+/* Лампы — естественнее */
 .tube{position:absolute;top:9%;bottom:12%;width:30px;z-index:2}
 .tube.left{left:3%} .tube.right{right:3%}
-
-/* корпус трубы */
 .tube .stick{
   position:absolute;inset:0;border-radius:18px;
   background:linear-gradient(180deg,#2c2c33 0%, #1a1a23 100%);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 38px rgba(0,0,0,.55);
 }
-/* светящаяся колба внутри */
 .tube .stick::before{
   content:"";position:absolute;left:7px;right:7px;top:7px;bottom:7px;border-radius:13px;background:#fff;
 }
 .tube.left .stick::before{
   background:linear-gradient(180deg,#ff49db 0%,#7a5cff 100%);
-  box-shadow:
-    0 0 16px rgba(255,59,208,.85),
-    0 0 42px rgba(122,92,255,.65),
-    0 0 110px rgba(255,59,208,.45);
-  animation: tubePulseL 3s infinite steps(100,end);
+  box-shadow:0 0 16px rgba(255,59,208,.85),0 0 42px rgba(122,92,255,.65),0 0 110px rgba(255,59,208,.45);
+  animation:tubePulseL 3s infinite steps(100,end);
 }
 .tube.right .stick::before{
   background:linear-gradient(180deg,#28e0ff 0%,#7a5cff 100%);
-  box-shadow:
-    0 0 16px rgba(40,224,255,.85),
-    0 0 42px rgba(122,92,255,.65),
-    0 0 110px rgba(40,224,255,.45);
-  animation: tubePulseR 3.5s infinite steps(100,end);
+  box-shadow:0 0 16px rgba(40,224,255,.85),0 0 42px rgba(122,92,255,.65),0 0 110px rgba(40,224,255,.45);
+  animation:tubePulseR 3.5s infinite steps(100,end);
 }
-
-/* торцевые заглушки + кронштейны */
-.tube::before, .tube::after{
-  content:""; position:absolute; left:50%; transform:translateX(-50%); width:44px; height:12px;
-  background:linear-gradient(180deg,#0c0f15,#1a1e27);
-  border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,.6);
-}
-.tube::before{ top:-10px }  /* верхний кронштейн */
-.tube::after { bottom:-10px }/* нижний кронштейн */
-
-/* мягкая тень от лампы на стене (реализм) */
-.tube .wall-shadow{
-  content:""; position:absolute; inset:-40px -140px; pointer-events:none; z-index:-1; border-radius:100px;
-  box-shadow: 0 40px 60px rgba(0,0,0,.25);
-}
-
-/* разлитие света по стене — чуть спокойнее */
 .tube .glow{
   content:""; position:absolute; inset:-120px -220px; border-radius:100px; mix-blend-mode:screen; filter:blur(36px); opacity:.85; pointer-events:none;
 }
 .tube.left .glow{ background:
   radial-gradient(50% 50% at 40% 50%, rgba(255,59,208,.52), transparent 70%),
   radial-gradient(60% 60% at 50% 50%, rgba(122,92,255,.3), transparent 75%);
-  animation: wallWashL 3.2s infinite steps(80,end);
+  animation:wallWashL 3.2s infinite steps(80,end);
 }
 .tube.right .glow{ background:
   radial-gradient(50% 50% at 60% 50%, rgba(40,224,255,.52), transparent 70%),
   radial-gradient(60% 60% at 50% 50%, rgba(122,92,255,.3), transparent 75%);
-  animation: wallWashR 3.7s infinite steps(90,end);
+  animation:wallWashR 3.7s infinite steps(90,end);
 }
-
 @keyframes tubePulseL{ 0%{opacity:.85} 8%{opacity:1} 15%{opacity:.9} 32%{opacity:1} 60%{opacity:.92} 100%{opacity:.88} }
 @keyframes tubePulseR{ 0%{opacity:.82} 10%{opacity:1} 20%{opacity:.9} 44%{opacity:1} 70%{opacity:.9} 100%{opacity:.86} }
 @keyframes wallWashL{ 0%{opacity:.28} 12%{opacity:.9} 26%{opacity:.5} 48%{opacity:1} 76%{opacity:.65} 100%{opacity:.8} }
 @keyframes wallWashR{ 0%{opacity:.24} 14%{opacity:.88} 30%{opacity:.48} 52%{opacity:1} 80%{opacity:.64} 100%{opacity:.78} }
 
-/* ===== ВЫВЕСКА: подложка + три SVG ===== */
-.hero-sign{
-  position:relative; width:min(560px,70vw);  /* ~в 2–3 раза меньше от прежних 1000px */
-  margin:0 auto 8px; z-index:3;
-}
-
-/* подложка под надпись (скошенное стекло/пластик), снижает общую яркость */
+/* Вывеска: уменьшена + подложка (снижает яркость) */
+.hero-sign{ position:relative; width:min(560px,70vw); margin:0 auto 8px; z-index:3; }
 .sign-backplate{
   position:absolute; inset:-18px -26px; border-radius:18px;
   background:linear-gradient(180deg, rgba(8,10,14,.55), rgba(8,10,14,.35));
   border:1px solid rgba(160,178,210,.12);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.06),
-    0 8px 24px rgba(0,0,0,.35),
-    0 0 120px rgba(40,224,255,.08),
-    0 0 120px rgba(255,59,208,.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 8px 24px rgba(0,0,0,.35), 0 0 120px rgba(40,224,255,.08), 0 0 120px rgba(255,59,208,.08);
   backdrop-filter: blur(2px);
 }
 
-/* три независимых слова — svg как img */
+/* Три независимых SVG-слова */
 .neon-stack{position:relative}
 .neon-word{
   width:100%; height:auto; display:block; opacity:1; image-rendering:auto;
-  /* псевдо-контур: тонкий тёмный «ореол» + неон-глоу сверху */
+  /* тонкий тёмный контур + неон-глоу */
   filter:
     drop-shadow(0 0 1px rgba(0,0,0,.7))
     drop-shadow(0 0 2px rgba(0,0,0,.6))
@@ -133,7 +115,7 @@ img{max-width:100%;display:block}
     drop-shadow(0 0 60px rgba(122,92,255,.45));
 }
 
-/* немного несинхронного мерцания (спокойнее, чем раньше) */
+/* Несинхронное, спокойное мерцание */
 .word-combat{animation:flickBlue 3.0s infinite steps(90,end) -0.2s}
 .word-unit  {animation:flickPink  2.2s infinite steps(80,end) -0.3s}
 .word-soon  {animation:flickPink  4.2s infinite steps(100,end) -0.1s}
@@ -151,7 +133,7 @@ img{max-width:100%;display:block}
   84%{opacity:.86} 90%{opacity:.46} 100%{opacity:.95}
 }
 
-/* ===== Остальной каркас ===== */
+/* Остальное */
 .tagline{color:var(--muted);max-width:860px;text-align:center}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;max-width:920px}
@@ -163,9 +145,6 @@ img{max-width:100%;display:block}
 h2{margin:0 0 14px;font-size:clamp(28px,4.2vw,44px);font-weight:800}
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 @media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
-.gallery img{width:100%;border-radius:14px;border:1px solid var(--border);background:#0f121a}
-
-.link-list{display:grid;gap:10px}
-.link-list a{padding:10px 14px;border-radius:10px;background:#0b0f15;border:1px solid var(--border)}
+.gallery .ph{aspect-ratio:1;border-radius:14px;border:1px solid var(--border);background:linear-gradient(135deg,#1b2030,#0d1017)}
 
 .site-footer{padding:40px 0;text-align:center;color:var(--muted)}
