@@ -1,3 +1,4 @@
+// год в футере
 const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear();
 
 // плавный скролл
@@ -8,7 +9,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// лайтбокс
-const lb=document.getElementById('lb'), lbimg=document.getElementById('lbimg'), gal=document.getElementById('gal');
-if(gal){ gal.addEventListener('click',e=>{ const img=e.target.closest('img'); if(!img) return; lbimg.src=img.src; lb.style.display='flex'; }); }
-if(lb){ lb.addEventListener('click',()=>lb.style.display='none'); }
+/**
+ * Подхватываем твои SVG без переименований.
+ * Для каждого <img> читаем data-candidates и пробуем пути по очереди.
+ */
+function tryLoad(img){
+  const list=(img.getAttribute('data-candidates')||'').split(',').map(s=>s.trim()).filter(Boolean);
+  if(!list.length) return;
+  let i=0; img.onerror=()=>{ i++; if(i<list.length) img.src=list[i]; };
+  img.src=list[0];
+}
+['svg-combat','svg-unit','svg-soon'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el) tryLoad(el);
+});
