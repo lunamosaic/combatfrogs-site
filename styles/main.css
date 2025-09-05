@@ -166,7 +166,8 @@ img{max-width:100%;display:block}
 
 /* Остальные секции */
 /* Hero description: центр и ограничение ширины */
-p.tagline.hero-desc {
+.hero .tagline,
+.hero-desc {
   display: block;                    /* на всякий случай */
   width: min(800px, 90vw);           /* ограничение ширины + адаптив */
   margin-inline: auto;               /* по центру горизонтально */
@@ -176,13 +177,15 @@ p.tagline.hero-desc {
 }
 
 /* если родитель — flex, не даём растягивать и сжимать */
-p.tagline.hero-desc {
+.hero .tagline,
+.hero-desc {
   flex: 0 0 auto;
 }
 
 /* Мобильная корректировка (чуть уже и помельче) */
 @media (max-width: 600px) {
-p.tagline.hero-desc {
+  .hero .tagline,
+  .hero-desc {
     width: min(92vw, 640px);
     font-size: clamp(15px, 4.2vw, 18px);
     line-height: 1.45;
