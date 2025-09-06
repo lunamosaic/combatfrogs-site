@@ -18,7 +18,7 @@ const io=new IntersectionObserver((entries)=>{
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 // === Allowlist Modal ===
 (function(){
-  const FORM_URL = 'REPLACE_WITH_YOUR_FORM_URL'; // <-- вставь сюда ссылку на Google Form / Apps Script
+  const FORM_URL = 'https://script.google.com/macros/s/AKfycbwWViqy8DzWVyKjGAnmeh5m-b3aVF3rWnTzgaj4EkSKZvlxzpiC3GY3aMLxH7vcHrrGZw/exec'; // <-- вставь сюда ссылку на Google Form / Apps Script
   const btn = document.getElementById('joinBtn');
   const modal = document.getElementById('allowlistModal');
   if(!btn || !modal) return;
