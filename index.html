@@ -88,9 +88,11 @@ img{max-width:100%;display:block}
 .btn-pink{background:linear-gradient(180deg,var(--pink),var(--pink2));color:#13020e;border:1px solid rgba(255,59,208,.55);box-shadow:0 0 18px rgba(255,59,208,.35)}
 
 .icon-row{display:flex;gap:16px;align-items:center;justify-content:center}
-.icon-btn{display:inline-flex;align-items:center;justify-content:center;background:none;border:none;padding:0;margin:0}
-.icon-btn svg{width:28px;height:28px;fill:#eaf0f6;transition:fill .25s ease, transform .25s ease}
-.icon-btn:hover svg{fill:var(--ice);transform:scale(1.08)}
+/* >>> обновлено: иконки без фона, цвет из currentColor */
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;background:none;border:none;padding:0;margin:0;color:#eaf0f6}
+.icon-btn:hover{color:var(--ice)}
+.icon-btn svg{width:28px;height:28px;fill:currentColor;transition:fill .25s ease, transform .25s ease, color .25s ease}
+.icon-btn:hover svg{transform:scale(1.08)}
 
 /* ===== Контент ниже HERO ===== */
 .section{padding:32px 0;border-bottom:1px solid var(--border)}
@@ -186,9 +188,13 @@ img{max-width:100%;display:block}
         <a class="icon-btn" href="https://x.com/Combatfrogsunit" target="_blank" rel="noopener" aria-label="X — @Combatfrogsunit">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.7 8.8L23.4 22H16l-5-6.5L5 22H2l8.3-9.5L1 2h7l4.5 5.9L18.9 2Zm-2.5 18h2.1L7.7 4H5.5l10.9 16Z"/></svg>
         </a>
-        <!-- Instagram -->
+        <!-- Instagram (контур, без заливки) -->
         <a class="icon-btn" href="https://www.instagram.com/combatfrogs" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5A5.5 5.5 0 1 1 6.5 13 5.51 5.51 0 0 1 12 7.5Zm6-1a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/>
+          </svg>
         </a>
       </div>
     </div>
