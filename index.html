@@ -215,10 +215,10 @@ Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming
 <!-- ===== /Modal ===== -->
 
 <script>
-// год в футере
-document.getElementById('y').textContent = new Date().getFullYear();
+/* год в футере — оставить, если есть */
+document.getElementById('y') && (document.getElementById('y').textContent = new Date().getFullYear());
 
-// Allowlist modal
+/* Allowlist modal (ГОТОВЫЙ БЛОК) */
 (function(){
   const FORM_URL_BASE = 'https://script.google.com/macros/s/AKfycbx4E1oiTTlEcAXsLSdOoLTgkTbDeRh6Q7x_atyN3bMDS6ogxPXgWWpa_WLj4gwlhQnp/exec';
 
@@ -238,7 +238,7 @@ document.getElementById('y').textContent = new Date().getFullYear();
     if (!loaded && frame){
       const url = FORM_URL_BASE + (FORM_URL_BASE.includes('?')?'&':'?') + 'v=' + Date.now(); // anti-cache
       frame.src = url;
-      if (direct) direct.href = url;
+      direct && (direct.href = url);
     }
     const closeBtn = modal.querySelector('.modal__close'); closeBtn && closeBtn.focus();
     document.addEventListener('keydown', onKey);
