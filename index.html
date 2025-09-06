@@ -4,11 +4,6 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Combat Frogs — Unit Era. Art First.</title>
-<meta property="og:title" content="Combat Frogs — Unit Era. Art First.">
-<meta property="og:description" content="5,000 hand-curated NFTs steeped in 2010s streetwear. Join the allowlist.">
-<meta property="og:image" content="assets/og-cover.jpg">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Combat Frogs: Unit is 5,000 hand-curated NFTs steeped in 2010s streetwear culture.
 Each piece is crafted with street DNA drawn from the rap game, breakdance legacy, and cap culture.
 Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming Soon." />
@@ -23,7 +18,6 @@ Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming
 :root{
   --bg:#0a0b10; --fg:#eaf0f6; --muted:#b4c2d1;
   --ice:#02bdf0; --ice2:#0198c4;
-  --pink:#ff3bd0; --pink2:#ff1f54;
   --border:#1b2030; --maxw:1200px;
   --font:'Anton', system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
@@ -33,24 +27,13 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 
-/* Header */
-.site-header{position:sticky;top:0;z-index:30;background:rgba(10,11,16,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.brand{display:flex;align-items:center;gap:10px;font-size:clamp(20px,2.6vw,28px);font-weight:700;letter-spacing:.06em}
-.brand-dot{width:18px;height:18px;border-radius:50%;background:#39ff14;box-shadow:0 0 12px #39ff14,0 0 28px #39ff14}
-.main-nav{display:flex;gap:20px;align-items:center}
-.main-nav a{text-transform:uppercase;opacity:.95}
-.btn{padding:10px 16px;border-radius:12px;font-weight:700;letter-spacing:.02em}
-.btn-dark{background:#0e121a;color:var(--fg);border:1px solid var(--border)}
-.btn-ice{background:linear-gradient(180deg,var(--ice),var(--ice2));color:#02141a;border:1px solid rgba(2,189,240,.6);box-shadow:0 0 18px rgba(2,189,240,.3)}
-
-/* Hero */
+/* ===== HERO (как в твоём файле) ===== */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
 .hero .hero-inner{
   position:relative; z-index:1; 
-  min-height:46vh;                 /* ↓ было 58vh → компактнее */
+  min-height:46vh;
   display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;
-  padding:40px 0;                  /* ↓ было 56px → меньше высота */
+  padding:40px 0;
 }
 .hero-bg{position:absolute;inset:0;z-index:0;background:center/cover no-repeat;filter:contrast(1.02) brightness(.9)}
 
@@ -78,7 +61,7 @@ img{max-width:100%;display:block}
   animation:soonFlick 3.7s infinite, soonJitter .9s infinite steps(10,end);
 }
 
-/* Аура только вокруг SUN — маска по PNG */
+/* Аура вокруг SUN по PNG-маске */
 .soon-wrap::after{
   content:"";position:absolute;inset:0;z-index:1;
   -webkit-mask-image:url('assets/soon.png');mask-image:url('assets/soon.png');
@@ -89,23 +72,19 @@ img{max-width:100%;display:block}
   filter:blur(16px);mix-blend-mode:screen;opacity:.6;
   animation:soonAura 3.7s infinite;
 }
-
 @keyframes soonFlick{0%{opacity:.95}10%{opacity:.2}12%{opacity:1}30%{opacity:.85}32%{opacity:0}34%{opacity:1}60%{opacity:.9}62%{opacity:0}65%{opacity:1}100%{opacity:.95}}
 @keyframes soonAura{0%{opacity:.6}10%{opacity:.2}12%{opacity:.7}30%{opacity:.55}32%{opacity:.05}34%{opacity:.7}60%{opacity:.5}62%{opacity:.1}65%{opacity:.7}100%{opacity:.6}}
 @keyframes soonJitter{0%{transform:translate(0,0)}50%{transform:translate(.5px,-.3px)}100%{transform:translate(0,0)}}
 
-/* Sections */
-.section{padding:56px 0;border-bottom:1px solid var(--border)}
-h2{margin:0 0 14px;font:700 clamp(28px,4.2vw,44px)/1 var(--font)}
-.lead{color:var(--muted);max-width:860px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
-.card{aspect-ratio:1;border-radius:14px;border:1px solid var(--border);background:#111}
-.link-list{display:grid;gap:10px}
-.link-list a{padding:10px 14px;border-radius:10px;background:#0b0f15;border:1px solid var(--border)}
-.site-footer{padding:40px 0;text-align:center;color:var(--muted)}
+/* ===== Добавки под HERO ===== */
+.section{padding:32px 0;border-bottom:1px solid var(--border)}
+.teaser{max-width:720px;margin:18px auto 0;text-align:center;color:var(--muted);line-height:1.55}
+.social-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+.btn{padding:10px 16px;border-radius:12px;font-weight:700;letter-spacing:.02em}
+.btn-dark{background:#0e121a;color:var(--fg);border:1px solid var(--border)}
+.btn-ice{background:linear-gradient(180deg,var(--ice),var(--ice2));color:#02141a;border:1px solid rgba(2,189,240,.6);box-shadow:0 0 18px rgba(2,189,240,.3)}
 
-/* === Allowlist Modal (inline) === */
+/* ===== Модалка allowlist ===== */
 .modal[hidden]{display:none!important}
 .modal{position:fixed;inset:0;z-index:999}
 .modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.66);backdrop-filter:blur(3px)}
@@ -115,16 +94,15 @@ h2{margin:0 0 14px;font:700 clamp(28px,4.2vw,44px)/1 var(--font)}
   box-shadow:0 0 30px rgba(57,255,20,.15),0 40px 120px rgba(0,0,0,.6);
   padding:18px;
 }
+.modal__title{margin:0 0 10px;font-family:"Anton",system-ui,sans-serif;letter-spacing:.02em}
 .modal__close{
   position:absolute;top:8px;right:8px;width:38px;height:38px;border-radius:50%;
   border:1px solid #ffffff2b;background:#0b0f11;color:#e6ffe6;font-size:22px;cursor:pointer;
   box-shadow:inset 0 0 8px rgba(57,255,20,.2)
 }
-.modal__title{margin:0 0 10px;font-family:"Anton",system-ui,sans-serif;letter-spacing:.02em}
 .modal__frame-wrap{
   position:relative;height:min(72vh,720px);border-radius:12px;overflow:hidden;background:#0b0f11;
-  box-shadow:inset 0 0 30px rgba(57,255,20,.08),0 0 20px rgba(57,255,20,.12);
-  border:1px solid #ffffff14
+  box-shadow:inset 0 0 30px rgba(57,255,20,.08),0 0 20px rgba(57,255,20,.12);border:1px solid #ffffff14
 }
 .modal__frame-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .spinner{
@@ -134,29 +112,12 @@ h2{margin:0 0 14px;font:700 clamp(28px,4.2vw,44px)/1 var(--font)}
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 .modal__fallback{margin-top:10px;opacity:.8;font-size:14px}
-
+.footer{display:flex;justify-content:center;align-items:center;padding:18px 0;opacity:.7}
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">
-      <span class="brand-dot"></span>
-      <span>COMBAT FROGS</span>
-    </a>
-    <nav class="main-nav">
-      <a href="#about">ABOUT</a>
-      <a href="#showcase">PREVIEW</a>
-      <a href="#links">LINKS</a>
-      <a href="#utility">UTILITY</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn btn-ice" href="#wl">WHITELIST</a>
-    </nav>
-  </div>
-</header>
-
-<!-- HERO -->
+<!-- ===== HERO (из твоего файла, без изменений) ===== -->
 <section id="hero" class="hero">
   <div class="hero-bg" style="background-image:url('assets/bg-brick.png')"></div>
 
@@ -177,83 +138,115 @@ Each piece is crafted with street DNA drawn from the rap game, breakdance legacy
 Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming Soon.</p>
     <div class="cta-row">
       <a class="btn btn-ice" href="#wl">Join Allowlist</a>
-      <a class="btn btn-dark" href="https://opensea.io/collection/combat-frogs/overview" target="_blank">OpenSea (OG)</a>
+      <a class="btn btn-dark" href="https://opensea.io/collection/combat-frogs" target="_blank">OpenSea (OG)</a>
     </div>
   </div>
 </section>
 
-<section id="about" class="section">
+<!-- ===== Мини-тизер (центр, ширина ~720px) ===== -->
+<section id="teaser" class="section" style="border:none; padding-top:12px">
   <div class="wrap">
-    <h2>About</h2>
-    <p class="lead">A style-first NFT initiative channeling early-2010s streetwear and club glow. Clean utility drops for real holders.</p>
+    <p class="teaser">
+      Hand-built in the neon hush. A unit is forming — disciplined, silent, sharp.
+      If you know, you know. Step in and hold your position.
+    </p>
   </div>
 </section>
 
-<section id="showcase" class="section">
+<!-- ===== Строчка соц-кнопок + дубль Join ===== -->
+<section id="links" class="section" style="border:none; padding-top:6px">
   <div class="wrap">
-    <h2>Preview</h2>
-    <div class="grid">
-      <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
-      <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
+    <div class="social-row">
+      <a id="openseaLink"   class="btn btn-ice" href="https://opensea.io/collection/combat-frogs/overview" target="_blank" rel="noopener">OpenSea (OG)</a>
+      <a id="twitterLink"   class="btn btn-ice" href="https://x.com/awaoriginal" target="_blank" rel="noopener">X — @awaoriginal</a>
+      <a id="twitterLink2"  class="btn btn-ice" href="https://x.com/Combatfrogsunit" target="_blank" rel="noopener">X — @Combatfrogsunit</a>
+      <a id="instagramLink" class="btn btn-ice" href="https://www.instagram.com/combatfrogs" target="_blank" rel="noopener">Instagram</a>
+      <a href="#wl" class="btn btn-dark">Join Allowlist</a>
     </div>
   </div>
 </section>
 
-<section id="links" class="section">
-  <div class="wrap">
-    <h2>Links & Hubs</h2>
-    <ul class="link-list">
-      <li><a href="https://x.com/awaoriginal" target="_blank" rel="noopener">X (Twitter) — @awaoriginal</a></li>
-      <li><a href="https://x.com/Combatfrogsunit" target="_blank" rel="noopener">X (Twitter, CFU) — @Combatfrogsunit</a></li>
-      <li><a href="https://www.instagram.com/combatfrogs" target="_blank" rel="noopener">Instagram — @combatfrogs</a></li>
-      <li><a href="https://opensea.io/collection/combat-frogs/overview" target="_blank" rel="noopener">OpenSea (OG)</a></li>
-    </ul>
-  </div>
+<!-- Якорь WL (скрытый, для кликов на #wl) -->
+<section id="wl" class="section" style="display:none">
+  <div class="wrap"><button id="joinBtn" class="btn btn-ice" type="button">Join Allowlist</button></div>
 </section>
 
-<section id="utility" class="section">
-  <div class="wrap">
-    <h2>Utility</h2>
-    <p>3D models, sketches, early collabs. Token-gate later.</p>
-  </div>
-</section>
+<footer class="footer"><div class="wrap">© <span id="y"></span> Combat Frogs</div></footer>
 
-<section id="faq" class="section">
-  <div class="wrap">
-    <h2>FAQ</h2>
-    <details><summary>Which chain?</summary><div>TBA. Follow X for updates.</div></details>
-    <details><summary>When mint?</summary><div>Soon™ — allowlist will be first.</div></details>
-  </div>
-</section>
-
-<section id="wl" class="section">
-  <div class="wrap" style="text-align:center">
-    <h2>Whitelist</h2>
-    <button id="joinBtn" class="btn btn-ice" type="button">Join Allowlist</button>
-  </div>
-</section>
-
-<footer class="site-footer"><div class="wrap">© <span id="y"></span> Combat Frogs</div></footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
-
-<!-- Allowlist Modal -->
+<!-- ===== Модалка ===== -->
 <div id="allowlistModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="wlTitle" hidden>
   <div class="modal__backdrop" data-close></div>
   <div class="modal__dialog">
     <button class="modal__close" type="button" aria-label="Close" data-close>&times;</button>
     <h2 id="wlTitle" class="modal__title">Join Allowlist</h2>
-
     <div class="modal__frame-wrap">
       <div class="spinner" aria-hidden="true"></div>
       <iframe id="wlFrame" title="Allowlist form" loading="lazy"></iframe>
     </div>
-
     <p class="modal__fallback">
       If the form doesn’t load, <a id="wlDirect" href="#" target="_blank" rel="noopener">open it directly</a>.
     </p>
   </div>
 </div>
 
-  <script defer src="main.js"></script>
+<!-- ===== Inline JS (без внешних файлов) ===== -->
+<script>
+// год в футере
+document.getElementById('y').textContent = new Date().getFullYear();
+
+// Allowlist modal: перехватываем ЛЮБЫЕ клики на #wl и #joinBtn
+(function(){
+  const FORM_URL = 'https://script.google.com/macros/s/AKfycbwWViqy8DzWVyKjGAnmeh5m-b3aVF3rWnTzgaj4EkSKZvlxzpiC3GY3aMLxH7vcHrrGZw/exec';
+
+  const modal   = document.getElementById('allowlistModal');
+  const frame   = document.getElementById('wlFrame');
+  const direct  = document.getElementById('wlDirect');
+  const spinner = modal.querySelector('.spinner');
+
+  let loaded = false, lastFocus = null;
+
+  function openModal(e){
+    if (e) e.preventDefault();
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    if (!loaded && FORM_URL && frame){
+      frame.src = FORM_URL;
+      if (direct) direct.href = FORM_URL;
+    }
+    const closeBtn = modal.querySelector('.modal__close'); closeBtn && closeBtn.focus();
+    document.addEventListener('keydown', onKey);
+  }
+  function closeModal(){
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    lastFocus && lastFocus.focus();
+  }
+  function onKey(e){
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Tab'){
+      const f = modal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+      if (!f.length) return;
+      const first=f[0], last=f[f.length-1];
+      if (e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+    }
+  }
+
+  document.addEventListener('click', function(e){
+    const t = e.target.closest('a[href="#wl"], #joinBtn, [data-join]');
+    if (t) openModal(e);
+  });
+
+  modal.addEventListener('click', function(e){
+    if (e.target.matches('[data-close], .modal__backdrop')) closeModal();
+  });
+
+  frame && frame.addEventListener('load', function(){
+    loaded = true; spinner && (spinner.style.display='none');
+  });
+})();
+</script>
 </body>
 </html>
