@@ -16,3 +16,51 @@ const io=new IntersectionObserver((entries)=>{
   });
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// === Allowlist Modal ===
+(function(){
+  const FORM_URL = 'REPLACE_WITH_YOUR_FORM_URL'; // <-- вставь сюда ссылку на Google Form / Apps Script
+  const btn = document.getElementById('joinBtn');
+  const modal = document.getElementById('allowlistModal');
+  if(!btn || !modal) return;
+
+  const frame = document.getElementById('wlFrame');
+  const direct = document.getElementById('wlDirect');
+  const spinner = modal.querySelector('.spinner');
+  const closeEls = modal.querySelectorAll('[data-close]');
+
+  let loaded = false, lastFocus = null;
+
+  function openModal(){
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    if(!loaded && FORM_URL){
+      frame.src = FORM_URL;
+      direct.href = FORM_URL;
+    }
+    const closeBtn = modal.querySelector('.modal__close');
+    closeBtn && closeBtn.focus();
+    document.addEventListener('keydown', onKey);
+  }
+  function closeModal(){
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    lastFocus && lastFocus.focus();
+  }
+  function onKey(e){
+    if(e.key === 'Escape') closeModal();
+    if(e.key === 'Tab'){
+      const f = modal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+      if(!f.length) return;
+      const first=f[0], last=f[f.length-1];
+      if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
+    }
+  }
+
+  btn.addEventListener('click', openModal);
+  closeEls.forEach(el => el.addEventListener('click', closeModal));
+  modal.addEventListener('click', (e)=>{ if(e.target.classList.contains('modal__backdrop')) closeModal(); });
+  frame.addEventListener('load', ()=>{ loaded = true; if(spinner) spinner.style.display = 'none'; });
+})();
