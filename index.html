@@ -82,16 +82,15 @@ img{max-width:100%;display:block}
 }
 
 /* ===== Кнопки/иконки в HERO ===== */
-.cta-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center}
 .btn{padding:10px 16px;border-radius:12px;font-weight:700;letter-spacing:.02em}
 .btn-ice{background:linear-gradient(180deg,var(--ice),var(--ice2));color:#02141a;border:1px solid rgba(2,189,240,.6);box-shadow:0 0 18px rgba(2,189,240,.3)}
 .btn-pink{background:linear-gradient(180deg,var(--pink),var(--pink2));color:#13020e;border:1px solid rgba(255,59,208,.55);box-shadow:0 0 18px rgba(255,59,208,.35)}
-.icon-row{display:flex;gap:10px;align-items:center}
-.icon-btn{
-  width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
-  border-radius:12px;border:1px solid var(--border);background:#0e121a;
-}
-.icon-btn svg{width:24px;height:24px;fill:#0f0f0f} /* чёрные иконки (можем перекрасить позже) */
+
+.icon-row{display:flex;gap:16px;align-items:center;justify-content:center}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;background:none;border:none;padding:0;margin:0}
+.icon-btn svg{width:28px;height:28px;fill:#eaf0f6;transition:fill .25s ease, transform .25s ease}
+.icon-btn:hover svg{fill:var(--ice);transform:scale(1.08)}
 
 /* ===== Контент ниже HERO ===== */
 .section{padding:32px 0;border-bottom:1px solid var(--border)}
@@ -189,7 +188,7 @@ img{max-width:100%;display:block}
         </a>
         <!-- Instagram -->
         <a class="icon-btn" href="https://www.instagram.com/combatfrogs" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.51 5.51 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm6-2.75a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 6.75Z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5A5.5 5.5 0 1 1 6.5 13 5.51 5.51 0 0 1 12 7.5Zm6-1a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"/></svg>
         </a>
       </div>
     </div>
@@ -205,7 +204,7 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- БЛОК С НИЖНИМИ КНОПКАМИ УДАЛЁН -->
+<!-- лишний нижний блок с кнопками удалён -->
 
 <section id="wl" class="section" style="display:none">
   <div class="wrap"><button id="joinBtn" class="btn btn-ice" type="button">Join Allowlist</button></div>
@@ -232,7 +231,7 @@ img{max-width:100%;display:block}
 
 <script>
 /* год в футере по центру */
-document.getElementById('y') && (document.getElementById('y').textContent = new Date().getFullYear());
+(function(){var y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear();})();
 
 /* Allowlist modal */
 (function(){
@@ -254,16 +253,16 @@ document.getElementById('y') && (document.getElementById('y').textContent = new 
     if (!loaded && frame){
       const url = FORM_URL_BASE + (FORM_URL_BASE.includes('?')?'&':'?') + 'v=' + Date.now();
       frame.src = url;
-      direct && (direct.href = url);
+      if (direct) direct.href = url;
     }
-    const closeBtn = modal.querySelector('.modal__close'); closeBtn && closeBtn.focus();
+    const closeBtn = modal.querySelector('.modal__close'); if (closeBtn) closeBtn.focus();
     document.addEventListener('keydown', onKey);
   }
   function closeModal(){
     modal.hidden = true;
     document.body.style.overflow = '';
     document.removeEventListener('keydown', onKey);
-    lastFocus && lastFocus.focus();
+    if (lastFocus) lastFocus.focus();
   }
   function onKey(e){
     if (e.key === 'Escape') closeModal();
@@ -282,9 +281,12 @@ document.getElementById('y') && (document.getElementById('y').textContent = new 
   modal.addEventListener('click', function(e){
     if (e.target.matches('[data-close], .modal__backdrop')) closeModal();
   });
-  frame && frame.addEventListener('load', function(){
-    loaded = true; spinner && (spinner.style.display='none');
-  });
+  if (frame){
+    frame.addEventListener('load', function(){
+      loaded = true;
+      if (spinner) spinner.style.display='none';
+    });
+  }
 })();
 </script>
 </body>
