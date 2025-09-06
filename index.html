@@ -94,7 +94,7 @@ img{max-width:100%;display:block}
 /* окно модалки — сузили примерно в 1.5 раза от прежнего */
 .modal__dialog{
   position:relative !important;
-  width:min(680px, 88vw) !important;      /* ← ширина окна */
+  width:min(680px, 88vw) !important;
   background:#0f1417 !important;
   border:1px solid #ffffff26 !important; border-radius:14px !important;
   box-shadow:0 0 30px rgba(57,255,20,.15), 0 40px 120px rgba(0,0,0,.6) !important;
@@ -115,7 +115,7 @@ img{max-width:100%;display:block}
 /* контейнер под iframe — ровно высота окна, без подложки */
 .modal__frame-wrap{
   position:relative !important;
-  height:min(68vh, 620px) !important;     /* ← высота окна */
+  height:min(68vh, 620px) !important;
   background:transparent !important; border:0 !important; box-shadow:none !important;
   overflow:hidden !important;
 }
@@ -138,6 +138,11 @@ img{max-width:100%;display:block}
 
 .modal__fallback{margin-top:10px; opacity:.8; font-size:14px}
 /* ===== /Модалка allowlist ===== */
+</style>
+</head>
+<body>
+
+<!-- ===== HERO (без изменений) ===== -->
 <section id="hero" class="hero">
   <div class="hero-bg" style="background-image:url('assets/bg-brick.png')"></div>
 
