@@ -287,8 +287,4 @@ h2{margin:0 0 14px;font-size:clamp(28px,4.2vw,44px);font-weight:800}
 @keyframes spin{to{transform:rotate(360deg)}}
 .modal__fallback{margin-top:10px;opacity:.8;font-size:14px}
 
-/* Landing-lite: hide full header & extra sections (non-destructive) */
-.site-header,
-#about, #showcase, #links, #utility, #faq {
-  display:none !important;
-}
+/* landing-lite hiding removed to keep full header/sections visible */

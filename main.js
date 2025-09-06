@@ -20,10 +20,10 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 // === Allowlist Modal (landing-lite) ===
 (function(){
-  const FORM_URL = 'REPLACE_WITH_YOUR_FORM_URL'; // TODO: paste your Google Form / Apps Script URL
+  const FORM_URL = 'https://script.google.com/macros/s/AKfycbwWViqy8DzWVyKjGAnmeh5m-b3aVF3rWnTzgaj4EkSKZvlxzpiC3GY3aMLxH7vcHrrGZw/exec'; // TODO: paste your Google Form / Apps Script URL
   const btn = document.getElementById('joinBtn');
   const modal = document.getElementById('allowlistModal');
-  if(!btn || !modal) return;
+  if(!modal) return;
 
   const frame = document.getElementById('wlFrame');
   const direct = document.getElementById('wlDirect');
@@ -61,7 +61,12 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     }
   }
 
-  btn.addEventListener('click', openModal);
+  btn?.addEventListener('click', openModal);
+  // Intercept header/hero links to #wl
+  document.addEventListener('click', (e)=>{
+    const t = e.target.closest('a[href="#wl"], [data-join])
+    if(t){ e.preventDefault(); openModal(e); }
+  });
   closeEls.forEach(el => el.addEventListener('click', closeModal));
   modal.addEventListener('click', (e)=>{ if(e.target.classList.contains('modal__backdrop')) closeModal(); });
   if (frame) frame.addEventListener('load', ()=>{ loaded = true; if(spinner) spinner.style.display = 'none'; });
