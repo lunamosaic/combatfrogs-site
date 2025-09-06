@@ -9,7 +9,6 @@ Each piece is crafted with street DNA drawn from the rap game, breakdance legacy
 Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming Soon." />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-<!-- Google Fonts: Anton -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
@@ -27,7 +26,7 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 
-/* ===== HERO (как в твоём файле) ===== */
+/* ===== HERO (как у тебя) ===== */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
 .hero .hero-inner{
   position:relative; z-index:1; 
@@ -60,8 +59,6 @@ img{max-width:100%;display:block}
   filter:drop-shadow(0 0 16px rgba(255,59,208,.6)) drop-shadow(0 0 28px rgba(255,59,208,.4));
   animation:soonFlick 3.7s infinite, soonJitter .9s infinite steps(10,end);
 }
-
-/* Аура вокруг SUN по PNG-маске */
 .soon-wrap::after{
   content:"";position:absolute;inset:0;z-index:1;
   -webkit-mask-image:url('assets/soon.png');mask-image:url('assets/soon.png');
@@ -117,7 +114,7 @@ img{max-width:100%;display:block}
 </head>
 <body>
 
-<!-- ===== HERO (из твоего файла, без изменений) ===== -->
+<!-- ===== HERO (без изменений) ===== -->
 <section id="hero" class="hero">
   <div class="hero-bg" style="background-image:url('assets/bg-brick.png')"></div>
 
@@ -143,7 +140,6 @@ Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming
   </div>
 </section>
 
-<!-- ===== Мини-тизер (центр, ширина ~720px) ===== -->
 <section id="teaser" class="section" style="border:none; padding-top:12px">
   <div class="wrap">
     <p class="teaser">
@@ -153,7 +149,6 @@ Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming
   </div>
 </section>
 
-<!-- ===== Строчка соц-кнопок + дубль Join ===== -->
 <section id="links" class="section" style="border:none; padding-top:6px">
   <div class="wrap">
     <div class="social-row">
@@ -166,14 +161,13 @@ Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming
   </div>
 </section>
 
-<!-- Якорь WL (скрытый, для кликов на #wl) -->
 <section id="wl" class="section" style="display:none">
   <div class="wrap"><button id="joinBtn" class="btn btn-ice" type="button">Join Allowlist</button></div>
 </section>
 
 <footer class="footer"><div class="wrap">© <span id="y"></span> Combat Frogs</div></footer>
 
-<!-- ===== Модалка ===== -->
+<!-- ===== Modal ===== -->
 <div id="allowlistModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="wlTitle" hidden>
   <div class="modal__backdrop" data-close></div>
   <div class="modal__dialog">
@@ -189,14 +183,13 @@ Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming
   </div>
 </div>
 
-<!-- ===== Inline JS (без внешних файлов) ===== -->
 <script>
 // год в футере
 document.getElementById('y').textContent = new Date().getFullYear();
 
-// Allowlist modal: перехватываем ЛЮБЫЕ клики на #wl и #joinBtn
+// Allowlist modal
 (function(){
-  const FORM_URL = 'https://script.google.com/macros/s/AKfycbx4E1oiTTlEcAXsLSdOoLTgkTbDeRh6Q7x_atyN3bMDS6ogxPXgWWpa_WLj4gwlhQnp/exec';
+  const FORM_URL_BASE = 'https://script.google.com/macros/s/AKfycbx4E1oiTTlEcAXsLSdOoLTgkTbDeRh6Q7x_atyN3bMDS6ogxPXgWWpa_WLj4gwlhQnp/exec';
 
   const modal   = document.getElementById('allowlistModal');
   const frame   = document.getElementById('wlFrame');
@@ -210,9 +203,11 @@ document.getElementById('y').textContent = new Date().getFullYear();
     lastFocus = document.activeElement;
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
-    if (!loaded && FORM_URL && frame){
-      frame.src = FORM_URL;
-      if (direct) direct.href = FORM_URL;
+
+    if (!loaded && frame){
+      const url = FORM_URL_BASE + (FORM_URL_BASE.includes('?')?'&':'?') + 'v=' + Date.now(); // anti-cache
+      frame.src = url;
+      if (direct) direct.href = url;
     }
     const closeBtn = modal.querySelector('.modal__close'); closeBtn && closeBtn.focus();
     document.addEventListener('keydown', onKey);
@@ -233,16 +228,13 @@ document.getElementById('y').textContent = new Date().getFullYear();
       else if (!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
     }
   }
-
   document.addEventListener('click', function(e){
     const t = e.target.closest('a[href="#wl"], #joinBtn, [data-join]');
     if (t) openModal(e);
   });
-
   modal.addEventListener('click', function(e){
     if (e.target.matches('[data-close], .modal__backdrop')) closeModal();
   });
-
   frame && frame.addEventListener('load', function(){
     loaded = true; spinner && (spinner.style.display='none');
   });
