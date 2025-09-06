@@ -20,7 +20,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 // === Allowlist Modal (landing-lite) ===
 (function(){
-  const FORM_URL = 'https://script.google.com/macros/s/AKfycbwWViqy8DzWVyKjGAnmeh5m-b3aVF3rWnTzgaj4EkSKZvlxzpiC3GY3aMLxH7vcHrrGZw/exec'; // TODO: paste your Google Form / Apps Script URL
+  const FORM_URL = 'REPLACE_WITH_YOUR_FORM_URL'; // TODO: paste your Google Form / Apps Script URL
   const btn = document.getElementById('joinBtn');
   const modal = document.getElementById('allowlistModal');
   if(!btn || !modal) return;
