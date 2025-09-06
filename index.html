@@ -27,23 +27,6 @@ Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming
   --border:#1b2030; --maxw:1200px;
   --font:'Anton', system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
-  <!-- Allowlist Modal -->
-<div id="allowlistModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="wlTitle" hidden>
-  <div class="modal__backdrop" data-close></div>
-  <div class="modal__dialog">
-    <button class="modal__close" type="button" aria-label="Close" data-close>&times;</button>
-    <h2 id="wlTitle" class="modal__title">Join Allowlist</h2>
-
-    <div class="modal__frame-wrap">
-      <div class="spinner" aria-hidden="true"></div>
-      <iframe id="wlFrame" title="Allowlist form" loading="lazy"></iframe>
-    </div>
-
-    <p class="modal__fallback">
-      If the form doesn’t load, <a id="wlDirect" href="#" target="_blank" rel="noopener">open it directly</a>.
-    </p>
-  </div>
-</div>
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);letter-spacing:.02em}
 a{color:inherit;text-decoration:none}
