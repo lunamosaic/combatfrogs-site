@@ -74,6 +74,13 @@ img{max-width:100%;display:block}
 @keyframes soonAura{0%{opacity:.6}10%{opacity:.2}12%{opacity:.7}30%{opacity:.55}32%{opacity:.05}34%{opacity:.7}60%{opacity:.5}62%{opacity:.1}65%{opacity:.7}100%{opacity:.6}}
 @keyframes soonJitter{0%{transform:translate(0,0)}50%{transform:translate(.5px,-.3px)}100%{transform:translate(0,0)}}
 
+/* текст в HERO — сузили и центрировали */
+.tagline.hero-desc{
+  max-width:760px;
+  margin:0 auto;
+  text-align:center;
+}
+
 /* ===== Кнопки/иконки в HERO ===== */
 .cta-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
 .btn{padding:10px 16px;border-radius:12px;font-weight:700;letter-spacing:.02em}
@@ -121,12 +128,12 @@ img{max-width:100%;display:block}
   background:transparent !important; border:0 !important; box-shadow:none !important;
   overflow:hidden !important;
 }
-/* КРИТИЧЕСКОЕ: сам <iframe> тёмный — белая «подложка» исчезает */
+/* сам <iframe> тёмный — белая «подложка» исчезает */
 .modal__frame-wrap iframe{
   position:absolute !important; inset:0 !important;
   width:100% !important; height:100% !important;
   border:0 !important; display:block !important;
-  background:#0f1417 !important; /* ← задаём фон iframe */
+  background:#0f1417 !important;
 }
 .spinner{
   --s:46px; position:absolute; inset:0; margin:auto; width:var(--s); height:var(--s);
@@ -160,7 +167,7 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
-    <p class="tagline hero-desc" style="text-align:center;max-width:860px">
+    <p class="tagline hero-desc">
       Combat Frogs: Unit is 5,000 hand-curated NFTs steeped in 2010s streetwear culture.
       Each piece is crafted with street DNA drawn from the rap game, breakdance legacy, and cap culture.
       Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming Soon.
