@@ -149,107 +149,98 @@ img{max-width:100%;display:block}
 .footer{border-top:1px solid var(--border);padding:16px 0}
 .footer .wrap{display:flex;justify-content:center;align-items:center}
 
- /* ====== RESPONSIVE (tablet & mobile) — фикс ширины текста и кнопок ====== */
+ /* ====== RESPONSIVE (tablet & mobile) ====== */
 
 /* планшеты */
 @media (max-width: 1024px) {
   .hero .hero-bg{
-    background-image: url('assets/bg-brick-tablet.png') !important;
-    background-position: center top;
+    background-image:url('assets/bg-brick-tablet.png') !important;
+    background-position:center top;
   }
 
-  .hero .hero-inner{min-height:58vh;padding:28px 0;gap:14px}
+  .hero .hero-inner{ min-height:58vh; padding:28px 0; gap:14px; }
 
-  .sign-wrap{width:min(460px,78vw);margin-bottom:2px}
+  /* надпись чуть компактнее */
+  .sign-wrap{ width:min(460px,78vw); margin-bottom:2px; }
 
-  .tube{top:7%;bottom:38%;width:12px}
-  .tube.left{left:4.5%} .tube.right{right:4.5%}
-
-  .wall-glow{width:42vw;opacity:.36;filter:blur(16px)}
-  .wall-glow.left{left:-10vw} .wall-glow.right{right:-10vw}
-
-  /* === ОГРАНИЧИЛИ ширину текста === */
+  /* текст короче и по центру */
   .tagline.hero-desc{
-    max-width: 680px !important;
-    margin: 0 auto !important;
-    text-align: justify !important;
-    text-justify: inter-word;
-    text-align-last: center !important;
-    hyphens: auto; -webkit-hyphens: auto;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
     font-size: clamp(16px,1.9vw,18px);
     line-height: 1.45;
     padding: 0 6px;
+    text-wrap: balance;
   }
 
-  /* кнопки НЕ уменьшаем — оставляем широкими */
-  .cta-row{gap:12px;justify-content:center;align-items:center}
+  /* кнопки – средние, не на всю ширину */
+  .cta-row{ gap:12px; justify-content:center; }
   .btn{
-    display:inline-flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    min-width: 260px;
-    width: auto !important;      /* не сжимать */
-    padding:10px 18px;
-    border-radius:10px;
-    text-align:center !important;
+    display:inline-flex; align-items:center; justify-content:center; text-align:center;
+    width: clamp(240px, 38vw, 340px);
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 18px;
   }
-  .icon-row{gap:12px}
-  .icon-btn svg{width:24px;height:24px}
+
+  .icon-row{ gap:12px; }
+  .icon-btn svg{ width:24px; height:24px; }
 }
 
-/* мобильные телефоны */
+/* мобильные */
 @media (max-width: 640px) {
   .hero .hero-bg{
-    background-image: url('assets/bg-brick-mobile.png') !important;
-    background-position: center top; background-size: cover;
-    filter: contrast(1.02) brightness(.95);
+    background-image:url('assets/bg-brick-mobile.png') !important;
+    background-position:center top;
+    background-size:cover;
+    filter:contrast(1.02) brightness(.95);
   }
 
-  .hero .hero-inner{min-height:70svh;padding:22px 0 20px;gap:12px}
+  .hero .hero-inner{ min-height:70svh; padding:22px 0 20px; gap:12px; }
 
-  .sign-wrap{width:min(380px,86vw);margin-bottom:0}
-  .sign-soon{filter:drop-shadow(0 0 12px rgba(255,59,208,.55)) drop-shadow(0 0 20px rgba(255,59,208,.35))}
+  .sign-wrap{ width:min(370px,86vw); margin-bottom:0; }
+  .sign-soon{
+    filter: drop-shadow(0 0 12px rgba(255,59,208,.55))
+            drop-shadow(0 0 20px rgba(255,59,208,.35));
+  }
 
-  .tube{top:9%;bottom:44%;width:10px}
-  .tube.left{left:6%} .tube.right{right:6%}
-  .tube .stick::after{inset:-16px;filter:blur(14px);opacity:.65}
+  /* лампы ближе к центру (как было), подсветка помягче */
+  .tube{ top:9%; bottom:44%; width:10px; }
+  .tube.left{ left:6%; } .tube.right{ right:6%; }
+  .tube .stick::after{ inset:-16px; filter:blur(14px); opacity:.65; }
 
-  .wall-glow{width:60vw;opacity:.32;filter:blur(14px)}
-
-  /* === ОГРАНИЧИЛИ ширину текста на мобиле === */
+  /* ВАЖНО: текст короче — внутри «труб» */
   .tagline.hero-desc{
-    max-width: 520px !important;
-    margin: 0 auto !important;
-    padding: 0 12px;
-    text-align: justify !important;
-    text-justify: inter-word;
-    text-align-last: center !important;
-    hyphens: auto; -webkit-hyphens: auto;
-    font-size: 16px !important;
-    line-height: 1.45 !important;
+    width: min(430px, 76vw);  /* ограничили реальную ширину текста */
+    max-width: none;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.45;
+    padding: 0 6px;
+    text-wrap: pretty;
   }
 
-  /* кнопки — ШИРОКИЕ (как раньше), в столбик */
-  .cta-row{flex-direction:column;gap:10px;justify-content:center;align-items:center}
+  /* кнопки – средние по ширине */
+  .cta-row{ gap:10px; justify-content:center; }
   .btn{
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    width: clamp(260px, 92vw, 560px) !important; /* широкие, но не за край */
-    max-width: none !important;
-    padding: 12px 16px;
-    font-size: 18px;
+    display:inline-flex; align-items:center; justify-content:center; text-align:center;
+    width: clamp(230px, 76vw, 320px);  /* не узкие и не на всю */
+    padding: 12px 14px;
     border-radius: 12px;
-    text-align: center !important;
+    font-size: 18px;
   }
 
-  .icon-row{gap:16px;margin-top:4px}
-  .icon-btn svg{width:28px;height:28px}
+  .icon-row{ gap:16px; margin-top:4px; }
+  .icon-btn svg{ width:28px; height:28px; }
 }
 
-/* уважение к prefers-reduced-motion */
+/* уважение к настройке «меньше анимаций» */
 @media (prefers-reduced-motion: reduce) {
-  .wall-glow, .tube .stick::before, .tube .stick::after, .sign-soon{animation:none !important}
+  .wall-glow, .tube .stick::before, .tube .stick::after, .sign-soon{
+    animation: none !important;
+  }
 }
 </style>
 </head>
