@@ -151,24 +151,9 @@ img{max-width:100%;display:block}
 
  /* ====== RESPONSIVE (tablet & mobile) ====== */
 
-/* Общие фиксы: текст по ширине и центр текста в кнопках */
-.tagline.hero-desc{
-  text-align: justify;         /* выравнивание по ширине */
-  text-align-last: center;     /* последняя строка по центру */
-  hyphens: auto;
-  -webkit-hyphens: auto;
-}
-.btn{
-  display: inline-flex;         /* надпись строго по центру кнопки */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  line-height: 1.05;
-}
-
 /* планшеты */
 @media (max-width: 1024px) {
-
+  /* фон под планшет */
   .hero .hero-bg{
     background-image: url('assets/bg-brick-tablet.png') !important;
     background-position: center top;
@@ -191,10 +176,15 @@ img{max-width:100%;display:block}
   .wall-glow.right{ right: -10vw; }
 
   .tagline.hero-desc{
-    max-width: 700px;
+    max-width: 680px !important;
     font-size: clamp(16px, 1.9vw, 18px);
     line-height: 1.45;
     padding: 0 6px;
+    text-align: justify !important;
+    text-justify: inter-word;
+    text-align-last: center !important;
+    hyphens: auto;
+    -webkit-hyphens: auto;
   }
 
   .btn{ padding: 10px 14px; border-radius: 10px; }
@@ -202,9 +192,8 @@ img{max-width:100%;display:block}
   .icon-btn svg{ width: 24px; height: 24px; }
 }
 
-/* телефоны */
+/* мобильные телефоны */
 @media (max-width: 640px) {
-
   .hero .hero-bg{
     background-image: url('assets/bg-brick-mobile.png') !important;
     background-position: center top;
@@ -232,16 +221,23 @@ img{max-width:100%;display:block}
   .wall-glow{ width: 60vw; opacity: .32; filter: blur(14px); }
 
   .tagline.hero-desc{
-    max-width: 520px;
+    max-width: 520px !important;
     margin: 0 auto;
-    font-size: 16px;
-    line-height: 1.45;
+    text-align: justify !important;
+    text-justify: inter-word;
+    text-align-last: center !important;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    font-size: 16px !important;
+    line-height: 1.45 !important;
     padding: 0 8px;
   }
 
   .cta-row{
+    flex-direction: column;
     gap: 10px;
     justify-content: center;
+    align-items: center;
   }
   .btn{
     width: 100%;
@@ -249,17 +245,20 @@ img{max-width:100%;display:block}
     padding: 12px 14px;
     font-size: 18px;
     border-radius: 12px;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
   .icon-row{ gap: 16px; margin-top: 4px; }
   .icon-btn svg{ width: 28px; height: 28px; }
 }
 
-/* уважение к prefers-reduced-motion */
+/* если пользователь просит меньше анимаций — уважаем */
 @media (prefers-reduced-motion: reduce) {
-  .wall-glow, .tube .stick::before, .tube .stick::after, .sign-soon{
-    animation: none !important;
-  }
+  .wall-glow, .tube .stick::before, .tube .stick::after,
+  .sign-soon{ animation: none !important; }
 }
 </style>
 </head>
