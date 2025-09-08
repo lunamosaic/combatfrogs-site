@@ -148,6 +148,114 @@ img{max-width:100%;display:block}
 /* ===== Footer ===== */
 .footer{border-top:1px solid var(--border);padding:16px 0}
 .footer .wrap{display:flex;justify-content:center;align-items:center}
+
+ /* ====== RESPONSIVE (tablet & mobile) ====== */
+
+/* слегка бережём мобильные девайсы */
+@media (max-width: 1024px) {
+  /* Переключаем фон на планшетный, перебиваем inline через !important */
+  .hero .hero-bg{
+    background-image: url('assets/bg-brick-tablet.png') !important;
+    background-position: center top;
+  }
+
+  /* компактнее герой-зона */
+  .hero .hero-inner{
+    min-height: 58vh;
+    padding: 28px 0;
+    gap: 14px;
+  }
+
+  /* уменьшаем табличку-надпись */
+  .sign-wrap{ width: min(460px, 78vw); margin-bottom: 2px; }
+
+  /* лампы уже и выше (визуально ближе к центру) */
+  .tube{ top: 7%; bottom: 38%; width: 12px; }
+  .tube.left{ left: 4.5%; }
+  .tube.right{ right: 4.5%; }
+
+  /* подсветка стены помягче и ближе к центру */
+  .wall-glow{ width: 42vw; opacity: .36; filter: blur(16px); }
+  .wall-glow.left{ left: -10vw; }
+  .wall-glow.right{ right: -10vw; }
+
+  /* текст под надписью — уже и покороче строка */
+  .tagline.hero-desc{
+    max-width: 700px;
+    font-size: clamp(16px, 1.9vw, 18px);
+    line-height: 1.45;
+    padding: 0 6px;
+  }
+
+  /* кнопки и иконки — компактнее */
+  .btn{ padding: 10px 14px; border-radius: 10px; }
+  .icon-row{ gap: 12px; }
+  .icon-btn svg{ width: 24px; height: 24px; }
+}
+
+/* мобильные телефоны */
+@media (max-width: 640px) {
+  /* фон под мобилу (перебиваем inline) */
+  .hero .hero-bg{
+    background-image: url('assets/bg-brick-mobile.png') !important;
+    background-position: center top;
+    background-size: cover;
+    filter: contrast(1.02) brightness(.95);
+  }
+
+  /* высоту делаем устойчивой для iOS (svh) */
+  .hero .hero-inner{
+    min-height: 70svh;    /* вместо 100vh */
+    padding: 22px 0 20px;
+    gap: 12px;
+  }
+
+  /* надпись меньше, чтобы не уезжала */
+  .sign-wrap{ width: min(380px, 86vw); margin-bottom: 0; }
+  .sign-soon{ filter: drop-shadow(0 0 12px rgba(255,59,208,.55)) drop-shadow(0 0 20px rgba(255,59,208,.35)); }
+
+  /* лампы уже и короче, ближе к центру */
+  .tube{ top: 9%; bottom: 44%; width: 10px; }
+  .tube.left{ left: 6%; }
+  .tube.right{ right: 6%; }
+  .tube .stick::after{ inset: -16px; filter: blur(14px); opacity: .65; }
+
+  /* подсветку стены приглушим, чтобы текст читался */
+  .wall-glow{ width: 60vw; opacity: .32; filter: blur(14px); }
+
+  /* абзац-описание — в центр и поуже */
+  .tagline.hero-desc{
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.45;
+    padding: 0 8px;
+  }
+
+  /* CTA в столбик */
+  .cta-row{
+    gap: 10px;
+    justify-content: center;
+  }
+  .btn{
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 14px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+
+  /* иконки ниже и крупнее кликабельная зона */
+  .icon-row{ gap: 16px; margin-top: 4px; }
+  .icon-btn svg{ width: 28px; height: 28px; }
+}
+
+/* если пользователь просит меньше анимаций — уважаем */
+@media (prefers-reduced-motion: reduce) {
+  .wall-glow, .tube .stick::before, .tube .stick::after,
+  .sign-soon{ animation: none !important; }
+} 
 </style>
 </head>
 <body>
