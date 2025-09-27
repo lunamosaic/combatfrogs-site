@@ -16,8 +16,8 @@ Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming
 <style>
 :root{
   --bg:#0a0b10; --fg:#eaf0f6; --muted:#b4c2d1;
-  --ice:#02bdf0; --ice2:#0198c4;
-  --pink:#ff3bd0; --pink2:#ff1f54;
+  --ice:#02bdf0; --ice2:#0198c4;                 /* голубая */
+  --pink:#ff3bd0; --pink2:#ff1f54;               /* розовая для OpenSea OG */
   --border:#1b2030; --maxw:1200px;
   --font:'Anton', system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
@@ -74,55 +74,174 @@ img{max-width:100%;display:block}
 @keyframes soonAura{0%{opacity:.6}10%{opacity:.2}12%{opacity:.7}30%{opacity:.55}32%{opacity:.05}34%{opacity:.7}60%{opacity:.5}62%{opacity:.1}65%{opacity:.7}100%{opacity:.6}}
 @keyframes soonJitter{0%{transform:translate(0,0)}50%{transform:translate(.5px,-.3px)}100%{transform:translate(0,0)}}
 
-/* tagline */
+/* текст в HERO — сузили и центрировали */
 .tagline.hero-desc{
   max-width:760px;
   margin:0 auto;
   text-align:center;
 }
 
-/* CTA */
+/* ===== Кнопки/иконки в HERO ===== */
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center}
 .btn{padding:10px 16px;border-radius:12px;font-weight:700;letter-spacing:.02em}
 .btn-ice{background:linear-gradient(180deg,var(--ice),var(--ice2));color:#02141a;border:1px solid rgba(2,189,240,.6);box-shadow:0 0 18px rgba(2,189,240,.3)}
 .btn-pink{background:linear-gradient(180deg,var(--pink),var(--pink2));color:#13020e;border:1px solid rgba(255,59,208,.55);box-shadow:0 0 18px rgba(255,59,208,.35)}
 
 .icon-row{display:flex;gap:16px;align-items:center;justify-content:center}
+/* >>> обновлено: иконки без фона, цвет из currentColor */
 .icon-btn{display:inline-flex;align-items:center;justify-content:center;background:none;border:none;padding:0;margin:0;color:#eaf0f6}
 .icon-btn:hover{color:var(--ice)}
 .icon-btn svg{width:28px;height:28px;fill:currentColor;transition:fill .25s ease, transform .25s ease, color .25s ease}
 .icon-btn:hover svg{transform:scale(1.08)}
 
-/* Section */
+/* ===== Контент ниже HERO ===== */
 .section{padding:32px 0;border-bottom:1px solid var(--border)}
 .teaser{max-width:1100px;margin:18px auto 0;text-align:center;color:var(--muted);line-height:1.55}
 
-/* Footer */
+/* ===== Модалка allowlist (узкая + iframe на весь блок) ===== */
+.modal[hidden]{display:none!important}
+.modal{
+  position:fixed !important; inset:0 !important; z-index:999 !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+}
+.modal__backdrop{
+  position:absolute !important; inset:0 !important;
+  background:rgba(0,0,0,.66) !important; backdrop-filter:blur(3px) !important;
+}
+.modal__dialog{
+  position:relative !important;
+  width:min(680px, 88vw) !important;
+  background:#0f1417 !important;
+  border:1px solid #ffffff26 !important; border-radius:14px !important;
+  box-shadow: 20px 0px 50px rgb(68 163 208), -20px 0px 50px rgb(243 77 172) !important;
+  padding:18px !important;
+}
+.modal__title{margin:0 0 10px !important;font-family:"Anton",system-ui,sans-serif !important;letter-spacing:.02em !important}
+.modal__close{
+  position:absolute !important; top:8px !important; right:8px !important;
+  width:38px !important; height:38px !important; border-radius:50% !important;
+  border:1px solid #ffffff2b !important; background:#0b0f11 !important; color:#e6ffe6 !important;
+  font-size:22px !important; cursor:pointer !important; box-shadow:inset 0 0 8px rgba(57,255,20,.2) !important;
+}
+.modal__frame-wrap{
+  position:relative !important;
+  height:min(68vh, 620px) !important;
+  background:transparent !important; border:0 !important; box-shadow:none !important;
+  overflow:hidden !important;
+}
+/* сам <iframe> тёмный — белая «подложка» исчезает */
+.modal__frame-wrap iframe{
+  position:absolute !important; inset:0 !important;
+  width:100% !important; height:100% !important;
+  border:0 !important; display:block !important;
+  background:#0f1417 !important;
+}
+.spinner{
+  --s:46px; position:absolute; inset:0; margin:auto; width:var(--s); height:var(--s);
+  border:3px solid #1c2a22; border-top-color:#39ff14; border-radius:50%;
+  animation:spin 1s linear infinite; filter:drop-shadow(0 0 10px rgba(57,255,20,.5))
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.modal__fallback{margin-top:10px; opacity:.8; font-size:14px}
+/* ===== /Modal ===== */
+
+/* ===== Footer ===== */
 .footer{border-top:1px solid var(--border);padding:16px 0}
 .footer .wrap{display:flex;justify-content:center;align-items:center}
 
-/* ===== Countdown inside hero ===== */   /* <!-- ADDED --> */
-.mint-countdown{
-  margin-top:20px;
-  display:flex; flex-direction:column;
-  align-items:center; gap:10px;
-  text-align:center;
+ /* ====== RESPONSIVE (tablet & mobile) ====== */
+
+/* планшеты */
+@media (max-width: 1024px) {
+  .hero .hero-bg{
+    background-image:url('assets/bg-brick-tablet.png') !important;
+    background-position:center top;
+  }
+
+  .hero .hero-inner{ min-height:58vh; padding:28px 0; gap:14px; }
+
+  /* надпись чуть компактнее */
+  .sign-wrap{ width:min(460px,78vw); margin-bottom:2px; }
+
+  /* текст короче и по центру */
+  .tagline.hero-desc{
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: clamp(16px,1.9vw,18px);
+    line-height: 1.45;
+    padding: 0 6px;
+    text-wrap: balance;
+  }
+
+  /* кнопки – средние, не на всю ширину */
+  .cta-row{ gap:12px; justify-content:center; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; text-align:center;
+    width: clamp(240px, 38vw, 340px);
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 18px;
+  }
+
+  .icon-row{ gap:12px; }
+  .icon-btn svg{ width:28px; height:24px; }
 }
-.mint-title{
-  font-weight:700; letter-spacing:.5px;
-  color:var(--ice); font-size:1.2rem;
+
+/* мобильные */
+@media (max-width: 640px) {
+  .hero .hero-bg{
+    background-image:url('assets/bg-brick-mobile.png') !important;
+    background-position:center top;
+    background-size:cover;
+    filter:contrast(1.02) brightness(.95);
+  }
+
+  .hero .hero-inner{ min-height:70svh; padding:22px 0 20px; gap:12px; }
+
+  .sign-wrap{ width:min(370px,86vw); margin-bottom:0; }
+  .sign-soon{
+    filter: drop-shadow(0 0 12px rgba(255,59,208,.55))
+            drop-shadow(0 0 20px rgba(255,59,208,.35));
+  }
+
+  /* лампы ближе к центру (как было), подсветка помягче */
+  .tube{ top:9%; bottom:44%; width:10px; }
+  .tube.left{ left:6%; } .tube.right{ right:6%; }
+  .tube .stick::after{ inset:-16px; filter:blur(14px); opacity:.65; }
+
+  /* ВАЖНО: текст короче — внутри «труб» */
+  .tagline.hero-desc{
+    width: min(430px, 76vw);  /* ограничили реальную ширину текста */
+    max-width: none;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.45;
+    padding: 0 6px;
+    text-wrap: pretty;
+  }
+
+  /* кнопки – средние по ширине */
+  .cta-row{ gap:10px; justify-content:center; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; text-align:center;
+    width: clamp(230px, 76vw, 320px);  /* не узкие и не на всю */
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 18px;
+  }
+
+  .icon-row{ gap:16px; margin-top:4px; }
+  .icon-btn svg{ width:28px; height:28px; }
 }
-.mint-timer{display:flex; gap:8px}
-.mint-timer span{
-  display:flex; align-items:baseline; gap:4px;
-  padding:6px 10px; border-radius:8px;
-  background:radial-gradient(circle at 30% 30%, rgba(2,189,240,.25), rgba(255,59,208,.15));
-  border:1px solid rgba(255,255,255,.08);
+
+/* уважение к настройке «меньше анимаций» */
+@media (prefers-reduced-motion: reduce) {
+  .wall-glow, .tube .stick::before, .tube .stick::after, .sign-soon{
+    animation: none !important;
+  }
 }
-.mint-timer b{font-size:1.3rem; font-variant-numeric:tabular-nums}
-.mint-timer small{font-size:.7rem; color:var(--muted); text-transform:uppercase}
-.mint-live{padding:6px 12px; border-radius:6px; background:#00ffa7; color:#021; font-weight:700; margin-top:6px}
-.mint-btn{margin-top:8px}
 </style>
 </head>
 <body>
@@ -149,67 +268,135 @@ img{max-width:100%;display:block}
       Today — digital style. Tomorrow — perhaps the foundations of a brand. Coming Soon.
     </p>
 
+    <!-- 5 элементов в ряд -->
     <div class="cta-row">
       <a class="btn btn-ice" href="#wl">Join Allowlist</a>
       <a class="btn btn-pink" href="https://opensea.io/collection/combat-frogs" target="_blank" rel="noopener">CF:OG Collection</a>
-      <div class="icon-row"> … </div>
-    </div>
 
-    <!-- Countdown inside hero -->   <!-- ADDED -->
-    <div class="mint-countdown">
-      <span class="mint-title">Mint starts in</span>
-      <div class="mint-timer">
-        <span><b id="cf-dd">--</b><small>d</small></span>
-        <span><b id="cf-hh">--</b><small>h</small></span>
-        <span><b id="cf-mm">--</b><small>m</small></span>
-        <span><b id="cf-ss">--</b><small>s</small></span>
+      <div class="icon-row">
+        <!-- X @awaoriginal -->
+        <a class="icon-btn" href="https://x.com/awaoriginal" target="_blank" rel="noopener" aria-label="X — @awaoriginal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.7 8.8L23.4 22H16l-5-6.5L5 22H2l8.3-9.5L1 2h7l4.5 5.9L18.9 2Zm-2.5 18h2.1L7.7 4H5.5l10.9 16Z"/></svg>
+        </a>
+        <!-- Discord (outline, как у IG) -->
+<a class="icon-btn" href="https://discord.gg/n44KQz7qnp" target="_blank" rel="noopener" aria-label="Discord">
+  <svg viewBox="0 0 24 24" aria-hidden="true" role="img" focusable="false">
+    <!-- Контур «шлема/контроллера» -->
+    <path
+      d="M20.3 4.37c-1.2-.67-2.46-1.1-3.42-1.37a13.7 13.7 0 0 0-.7 1.49 18.7 18.7 0 0 0-5.36 0 13.7 13.7 0 0 0-.7-1.49c-.96.27-2.22.7-3.42 1.37-2.74 4.68-3.56 9.21-3.27 13.69A19.9 19.9 0 0 0 8.66 21.1c.47-.64.9-1.34 1.27-2.09-.73-.26-1.4-.58-2.03-.98.17-.13.34-.25.49-.38 3.93 1.83 8.19 1.83 12.07 0 .16.13.32.25.49.38-.63.39-1.3.72-2.03.98.37.75.8 1.45 1.27 2.09a19.9 19.9 0 0 0 4.89-3.04c.36-5.08-.62-9.58-2.85-13.69Z"
+      fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <!-- Глазки (как у IG: маленькие заливки) -->
+    <circle cx="9.35" cy="13.1" r="1.1" fill="currentColor"/>
+    <circle cx="14.65" cy="13.1" r="1.1" fill="currentColor"/>
+  </svg>
+</a>
+        <!-- Instagram (контур, без заливки) -->
+        <a class="icon-btn" href="https://www.instagram.com/combatfrogs" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
       </div>
-      <div id="cf-live-badge" class="mint-live" hidden>Mint is LIVE 🔥</div>
-      <a class="btn btn-pink mint-btn"
-         href="https://opensea.io/collection/combat-frogs-unit/overview"
-         target="_blank" rel="noopener">
-        Mint on OpenSea
-      </a>
     </div>
   </div>
 </section>
 
-<section id="teaser" class="section"> … </section>
-<section id="wl" class="section"> … </section>
-<footer class="footer"> … </footer>
+<section id="teaser" class="section" style="border:none; padding-top:12px">
+  <div class="wrap">
+    <p class="teaser">
+      Hand-built in the neon hush. A unit is forming — disciplined, silent, sharp.
+      If you know, you know. Step in and hold your position.
+    </p>
+  </div>
+</section>
 
-<!-- ===== Scripts ===== -->
+<!-- лишний нижний блок с кнопками удалён -->
+
+<section id="wl" class="section" style="display:none">
+  <div class="wrap"><button id="joinBtn" class="btn btn-ice" type="button">Join WL</button></div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">© <span id="y"></span>&nbsp;Combat Frogs</div>
+</footer>
+
+<!-- ===== Modal ===== -->
+<div id="allowlistModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="wlTitle" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__dialog">
+    <button class="modal__close" type="button" aria-label="Close" data-close>&times;</button>
+    <h2 id="wlTitle" class="modal__title">Join Allowlist</h2>
+    <div class="modal__frame-wrap">
+      <div class="spinner" aria-hidden="true"></div>
+      <iframe id="wlFrame" title="Allowlist form" loading="lazy"></iframe>
+    </div>
+    <p class="modal__fallback">
+      If the form doesn’t load, <a id="wlDirect" href="#" target="_blank" rel="noopener">open it directly</a>.
+    </p>
+  </div>
+</div>
+<!-- ===== /Modal ===== -->
+
 <script>
-/* год в футере */
-document.getElementById('y').textContent = new Date().getFullYear();
+/* год в футере по центру */
+(function(){var y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear() + ' ';})();
 
-/* Mint Countdown */   /* <!-- ADDED --> */
+/* Allowlist modal */
 (function(){
-  const start = new Date("2025-09-30T20:00:00+07:00").getTime();
-  const dd=document.getElementById("cf-dd"),
-        hh=document.getElementById("cf-hh"),
-        mm=document.getElementById("cf-mm"),
-        ss=document.getElementById("cf-ss"),
-        live=document.getElementById("cf-live-badge");
+  const FORM_URL_BASE = 'https://script.google.com/macros/s/AKfycbx4E1oiTTlEcAXsLSdOoLTgkTbDeRh6Q7x_atyN3bMDS6ogxPXgWWpa_WLj4gwlhQnp/exec';
 
-  function pad(n){return String(n).padStart(2,"0");}
+  const modal   = document.getElementById('allowlistModal');
+  const frame   = document.getElementById('wlFrame');
+  const direct  = document.getElementById('wlDirect');
+  const spinner = modal.querySelector('.spinner');
 
-  function tick(){
-    const now=Date.now(), diff=start-now;
-    if(diff<=0){
-      dd.textContent=hh.textContent=mm.textContent=ss.textContent="00";
-      live.hidden=false;
-      clearInterval(timer); return;
+  let loaded = false, lastFocus = null;
+
+  function openModal(e){
+    if (e) e.preventDefault();
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+
+    if (!loaded && frame){
+      const url = FORM_URL_BASE + (FORM_URL_BASE.includes('?')?'&':'?') + 'v=' + Date.now();
+      frame.src = url;
+      if (direct) direct.href = url;
     }
-    const d=Math.floor(diff/86400000),
-          h=Math.floor((diff/3600000)%24),
-          m=Math.floor((diff/60000)%60),
-          s=Math.floor((diff/1000)%60);
-    dd.textContent=pad(d); hh.textContent=pad(h);
-    mm.textContent=pad(m); ss.textContent=pad(s);
+    const closeBtn = modal.querySelector('.modal__close'); if (closeBtn) closeBtn.focus();
+    document.addEventListener('keydown', onKey);
   }
-  tick();
-  const timer=setInterval(tick,1000);
+  function closeModal(){
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    if (lastFocus) lastFocus.focus();
+  }
+  function onKey(e){
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Tab'){
+      const f = modal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+      if (!f.length) return;
+      const first=f[0], last=f[f.length-1];
+      if (e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+    }
+  }
+  document.addEventListener('click', function(e){
+    const t = e.target.closest('a[href="#wl"], #joinBtn, [data-join]');
+    if (t) openModal(e);
+  });
+  modal.addEventListener('click', function(e){
+    if (e.target.matches('[data-close], .modal__backdrop')) closeModal();
+  });
+  if (frame){
+    frame.addEventListener('load', function(){
+      loaded = true;
+      if (spinner) spinner.style.display='none';
+    });
+  }
 })();
 </script>
 </body>
